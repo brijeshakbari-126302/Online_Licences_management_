@@ -71,14 +71,14 @@
                         <div class="table-cell-sub">{{ $employee->job_title }}</div>
                     </td>
                     <td>
-                        <code class="license-key-tag" style="color: var(--primary-light);">{{ $employee->employee_id }}</code>
+                        <code class="license-key-tag" style="color: var(--primary); font-weight: 600;">{{ $employee->employee_id }}</code>
                     </td>
                     <td>
                         <div style="font-weight: 500; color: var(--text-main);">{{ $employee->department }}</div>
                         <div class="table-cell-sub">{{ $employee->job_title }}</div>
                     </td>
                     <td>
-                        <div><a href="mailto:{{ $employee->email }}" style="color: var(--primary-light);">{{ $employee->email }}</a></div>
+                        <div><a href="mailto:{{ $employee->email }}" style="color: var(--primary);">{{ $employee->email }}</a></div>
                         <div class="table-cell-sub">{{ $employee->phone ?? '-' }}</div>
                     </td>
                     <td>

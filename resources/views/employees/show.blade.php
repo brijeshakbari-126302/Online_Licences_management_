@@ -35,7 +35,7 @@
             </div>
             <div>
                 <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.25rem;">
-                    <span style="font-size: 1.4rem; font-weight: 800; color: #ffffff;">{{ $employee->name }}</span>
+                    <span style="font-size: 1.4rem; font-weight: 800; color: var(--text-main);">{{ $employee->name }}</span>
                     @if ($employee->status === 'active')
                         <span class="badge badge-active"><span class="badge-dot"></span> Active</span>
                     @elseif ($employee->status === 'on_leave')
@@ -66,7 +66,7 @@
         <div class="meta-item">
             <span class="meta-item-label">Corporate Email</span>
             <span class="meta-item-value">
-                <a href="mailto:{{ $employee->email }}" style="color: var(--primary-light);">{{ $employee->email }}</a>
+                <a href="mailto:{{ $employee->email }}" style="color: var(--primary);">{{ $employee->email }}</a>
             </span>
         </div>
 
@@ -140,7 +140,7 @@
                                 </td>
                                 <td>
                                     @if ($assignment->device_info)
-                                        <span style="font-family: var(--font-mono); font-size: 0.82rem; color: #cbd5e1;">{{ $assignment->device_info }}</span>
+                                        <span style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted);">{{ $assignment->device_info }}</span>
                                     @else
                                         <span style="color: var(--text-dim); font-size: 0.8rem;">General Account</span>
                                     @endif

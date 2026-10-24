@@ -30,16 +30,16 @@
 <div class="detail-hero-card">
     <div class="detail-hero-header">
         <div>
-            <div style="font-size: 1.5rem; font-weight: 800; color: #ffffff; margin-bottom: 0.35rem;">{{ $vendor->name }}</div>
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.35rem;">{{ $vendor->name }}</div>
             <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
                 @if ($vendor->website)
-                    <a href="{{ $vendor->website }}" target="_blank" rel="noopener noreferrer" style="color: var(--primary-light); font-size: 0.9rem; font-weight: 500;">
+                    <a href="{{ $vendor->website }}" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-size: 0.9rem; font-weight: 500;">
                         {{ $vendor->website }} &nearr;
                     </a>
                 @endif
                 @if ($vendor->support_url)
                     <span style="color: var(--text-dim);">&bull;</span>
-                    <a href="{{ $vendor->support_url }}" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; font-size: 0.9rem; font-weight: 500;">
+                    <a href="{{ $vendor->support_url }}" target="_blank" rel="noopener noreferrer" style="color: #0284c7; font-size: 0.9rem; font-weight: 500;">
                         Support Desk Portal &nearr;
                     </a>
                 @endif
@@ -63,7 +63,7 @@
             <span class="meta-item-label">Contact Email</span>
             <span class="meta-item-value">
                 @if ($vendor->contact_email)
-                    <a href="mailto:{{ $vendor->contact_email }}" style="color: var(--primary-light);">{{ $vendor->contact_email }}</a>
+                    <a href="mailto:{{ $vendor->contact_email }}" style="color: var(--primary);">{{ $vendor->contact_email }}</a>
                 @else
                     <span style="color: var(--text-dim);">-</span>
                 @endif
@@ -77,7 +77,7 @@
 
         <div class="meta-item">
             <span class="meta-item-label">Total Seats Contracted</span>
-            <span class="meta-item-value" style="color: #ffffff;">{{ $vendor->licenses->sum('total_seats') }} seats</span>
+            <span class="meta-item-value" style="color: var(--text-main);">{{ $vendor->licenses->sum('total_seats') }} seats</span>
         </div>
     </div>
 </div>
@@ -169,7 +169,7 @@
                                 </td>
                                 <td>
                                     @if ($lic->expiration_date)
-                                        <div style="font-weight: 500; color: {{ $lic->isExpired() ? '#f87171' : ($lic->isExpiringSoon() ? '#fbbf24' : 'var(--text-muted)') }};">
+                                        <div style="font-weight: 500; color: {{ $lic->isExpired() ? '#dc2626' : ($lic->isExpiringSoon() ? '#d97706' : 'var(--text-muted)') }};">
                                             {{ $lic->expiration_date->format('M d, Y') }}
                                         </div>
                                     @else

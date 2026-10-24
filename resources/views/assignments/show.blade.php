@@ -34,10 +34,10 @@
                 @endif
                 <span class="badge badge-primary">{{ $assignment->license->license_type }}</span>
             </div>
-            <div style="font-size: 1.35rem; font-weight: 800; color: #ffffff;">
-                <a href="{{ route('licenses.show', $assignment->license) }}" style="color: #ffffff;">{{ $assignment->license->software_name }}</a>
+            <div style="font-size: 1.35rem; font-weight: 800; color: var(--text-main);">
+                <a href="{{ route('licenses.show', $assignment->license) }}" style="color: var(--text-main);">{{ $assignment->license->software_name }}</a>
                 &rarr;
-                <a href="{{ route('employees.show', $assignment->employee) }}" style="color: var(--primary-light);">{{ $assignment->employee->name }}</a>
+                <a href="{{ route('employees.show', $assignment->employee) }}" style="color: var(--primary);">{{ $assignment->employee->name }}</a>
             </div>
         </div>
 
@@ -58,7 +58,7 @@
 
         <div class="meta-item">
             <span class="meta-item-label">Revoked Date</span>
-            <span class="meta-item-value" style="color: {{ $assignment->revoked_date ? '#f87171' : 'var(--text-dim)' }};">
+            <span class="meta-item-value" style="color: {{ $assignment->revoked_date ? '#dc2626' : 'var(--text-dim)' }};">
                 {{ $assignment->revoked_date ? $assignment->revoked_date->format('M d, Y') : 'Active (Not Revoked)' }}
             </span>
             @if ($assignment->revoked_date)

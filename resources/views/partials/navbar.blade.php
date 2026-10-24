@@ -11,6 +11,14 @@
             <span class="breadcrumb-separator">/</span>
             @if (request()->routeIs('dashboard', 'home'))
                 <span class="current">Dashboard</span>
+            @elseif (request()->routeIs('reports.*'))
+                <span class="current">Reports & Analytics</span>
+            @elseif (request()->routeIs('renewals.*'))
+                <span class="current">Renewals & Expirations</span>
+            @elseif (request()->routeIs('activity.*'))
+                <span class="current">Audit Activity Log</span>
+            @elseif (request()->routeIs('settings.*'))
+                <span class="current">System Settings</span>
             @elseif (request()->routeIs('licenses.*'))
                 <a href="{{ route('licenses.index') }}">Licenses</a>
                 @if (request()->routeIs('licenses.create'))

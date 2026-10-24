@@ -12,7 +12,7 @@
             </a>
             <h1>{{ $license->software_name }}</h1>
         </div>
-        <p class="page-subtitle">Provided by <a href="{{ route('vendors.show', $license->vendor) }}" style="color: var(--primary-light); font-weight: 600;">{{ $license->vendor->name }}</a> &bull; {{ $license->license_type }}</p>
+        <p class="page-subtitle">Provided by <a href="{{ route('vendors.show', $license->vendor) }}" style="color: var(--primary); font-weight: 600;">{{ $license->vendor->name }}</a> &bull; {{ $license->license_type }}</p>
     </div>
     <div class="page-actions">
         <a href="{{ route('assignments.create', ['license_id' => $license->id]) }}" class="btn btn-primary">
@@ -43,14 +43,14 @@
                 @endif
             </div>
             <div style="font-size: 1.15rem; color: var(--text-muted);">
-                Vendor Publisher: <a href="{{ route('vendors.show', $license->vendor) }}" style="color: #ffffff; font-weight: 600;">{{ $license->vendor->name }}</a>
+                Vendor Publisher: <a href="{{ route('vendors.show', $license->vendor) }}" style="color: var(--text-main); font-weight: 600;">{{ $license->vendor->name }}</a>
             </div>
         </div>
 
         <div style="min-width: 200px;">
             <div class="seat-meter-info" style="margin-bottom: 0.35rem;">
                 <span style="font-weight: 600; color: var(--text-main);">Seats In Use: {{ $license->assigned_seats_count }} / {{ $license->total_seats }}</span>
-                <span style="font-weight: 700; color: var(--primary-light);">{{ $license->utilization_percentage }}%</span>
+                <span style="font-weight: 700; color: var(--primary);">{{ $license->utilization_percentage }}%</span>
             </div>
             <div class="seat-meter-bar" style="height: 10px;">
                 <div class="seat-meter-fill {{ $license->utilization_percentage >= 90 ? 'warning' : 'normal' }}" style="width: {{ $license->utilization_percentage }}%;"></div>
@@ -79,7 +79,7 @@
 
         <div class="meta-item">
             <span class="meta-item-label">Total Agreement Spend</span>
-            <span class="meta-item-value" style="color: var(--primary-light);">${{ number_format($license->total_cost, 2) }} {{ $license->currency }}</span>
+            <span class="meta-item-value" style="color: var(--primary);">${{ number_format($license->total_cost, 2) }} {{ $license->currency }}</span>
             <span style="font-size: 0.76rem; color: var(--text-dim);">For {{ $license->total_seats }} total seats</span>
         </div>
 
@@ -90,7 +90,7 @@
 
         <div class="meta-item">
             <span class="meta-item-label">Expiration / Renewal</span>
-            <span class="meta-item-value" style="color: {{ $license->isExpired() ? '#f87171' : ($license->isExpiringSoon() ? '#fbbf24' : 'var(--text-main)') }};">
+            <span class="meta-item-value" style="color: {{ $license->isExpired() ? '#dc2626' : ($license->isExpiringSoon() ? '#d97706' : 'var(--text-main)') }};">
                 {{ $license->expiration_date ? $license->expiration_date->format('M d, Y') : 'Never (Perpetual)' }}
             </span>
             @if ($license->expiration_date)
@@ -167,7 +167,7 @@
                                 <td>{{ $assignment->employee->department }}</td>
                                 <td>
                                     @if ($assignment->device_info)
-                                        <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #cbd5e1;">{{ $assignment->device_info }}</span>
+                                        <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted);">{{ $assignment->device_info }}</span>
                                     @else
                                         <span style="color: var(--text-dim); font-size: 0.8rem;">Unspecified</span>
                                     @endif

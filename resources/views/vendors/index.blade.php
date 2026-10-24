@@ -66,7 +66,7 @@
                     </td>
                     <td>
                         @if ($vendor->contact_email)
-                            <div><a href="mailto:{{ $vendor->contact_email }}" style="color: var(--primary-light);">{{ $vendor->contact_email }}</a></div>
+                            <div><a href="mailto:{{ $vendor->contact_email }}" style="color: var(--primary);">{{ $vendor->contact_email }}</a></div>
                         @endif
                         @if ($vendor->contact_phone)
                             <div class="table-cell-sub">{{ $vendor->contact_phone }}</div>
@@ -83,7 +83,7 @@
                                 </a>
                             @endif
                             @if ($vendor->support_url)
-                                <a href="{{ $vendor->support_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="font-size: 0.76rem; padding: 0.25rem 0.55rem; color: #38bdf8;">
+                                <a href="{{ $vendor->support_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="font-size: 0.76rem; padding: 0.25rem 0.55rem; color: #0284c7;">
                                     Support &nearr;
                                 </a>
                             @endif

@@ -115,7 +115,7 @@
                     </td>
                     <td>
                         @if ($license->expiration_date)
-                            <div style="font-weight: 500; color: {{ $license->isExpired() ? '#f87171' : ($license->isExpiringSoon() ? '#fbbf24' : 'var(--text-muted)') }};">
+                            <div style="font-weight: 500; color: {{ $license->isExpired() ? '#dc2626' : ($license->isExpiringSoon() ? '#d97706' : 'var(--text-muted)') }};">
                                 {{ $license->expiration_date->format('M d, Y') }}
                             </div>
                             <div class="table-cell-sub">

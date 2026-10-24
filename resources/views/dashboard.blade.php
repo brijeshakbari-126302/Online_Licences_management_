@@ -82,13 +82,13 @@
 
 <!-- Urgent Expiration Alert Banner (If Any) -->
 @if ($expiringLicenses->isNotEmpty() || $expiredLicenses->isNotEmpty())
-    <div class="panel-card" style="border-color: rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.05); margin-bottom: 2rem;">
-        <div class="panel-header" style="border-bottom-color: rgba(245, 158, 11, 0.2);">
-            <div class="panel-title" style="color: #fbbf24;">
+    <div class="panel-card" style="border-color: rgba(245, 158, 11, 0.4); background: #fffbeb; margin-bottom: 2rem;">
+        <div class="panel-header" style="border-bottom-color: rgba(245, 158, 11, 0.25);">
+            <div class="panel-title" style="color: #b45309;">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
                 <span>Attention Required: Licenses Expiring Soon or Expired</span>
             </div>
-            <a href="{{ route('licenses.index') }}" class="btn btn-secondary btn-sm" style="border-color: rgba(245, 158, 11, 0.3); color: #fbbf24;">View All Licenses</a>
+            <a href="{{ route('licenses.index') }}" class="btn btn-secondary btn-sm" style="border-color: rgba(245, 158, 11, 0.4); color: #b45309;">View All Licenses</a>
         </div>
         <div class="table-responsive" style="background: transparent; border: none; border-radius: 0;">
             <table class="custom-table">
@@ -111,7 +111,7 @@
                             </td>
                             <td>{{ $license->vendor->name ?? 'N/A' }}</td>
                             <td>
-                                <span style="color: #fbbf24; font-weight: 600;">{{ $license->expiration_date->format('M d, Y') }}</span>
+                                <span style="color: #b45309; font-weight: 600;">{{ $license->expiration_date->format('M d, Y') }}</span>
                                 <div class="table-cell-sub">In {{ $license->expiration_date->diffInDays(now()) }} days</div>
                             </td>
                             <td>{{ $license->activeAssignments->count() }} / {{ $license->total_seats }}</td>
@@ -135,7 +135,7 @@
                             </td>
                             <td>{{ $license->vendor->name ?? 'N/A' }}</td>
                             <td>
-                                <span style="color: #f87171; font-weight: 600;">{{ $license->expiration_date->format('M d, Y') }}</span>
+                                <span style="color: #dc2626; font-weight: 600;">{{ $license->expiration_date->format('M d, Y') }}</span>
                                 <div class="table-cell-sub">Expired {{ $license->expiration_date->diffForHumans() }}</div>
                             </td>
                             <td>{{ $license->activeAssignments->count() }} / {{ $license->total_seats }}</td>
