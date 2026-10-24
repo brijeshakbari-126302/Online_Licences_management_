@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="panel-body">
-            <form action="{{ route('settings.update') }}" method="POST">
+            <form action="{{ route('settings.update') }}" method="POST" novalidate id="settings-form">
                 @csrf
 
                 <!-- Company Info -->

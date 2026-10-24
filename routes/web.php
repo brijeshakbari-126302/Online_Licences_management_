@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LicenseController;
 use App\Http\Controllers\RenewalController;
 use App\Http\Controllers\ReportController;
@@ -11,8 +13,20 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\VendorController;
 use Illuminate\Support\Facades\Route;
 
-// Dashboard
-Route::get('/', [DashboardController::class, 'index'])->name('home');
+// Public Website Pages
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('/contact', [HomeController::class, 'submitContact'])->name('contact.store');
+
+// Authentication & Session Management
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+Route::post('/register', [AuthController::class, 'register'])->name('register.submit');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Executive Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 // Core Resource Management

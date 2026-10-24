@@ -5,9 +5,11 @@ namespace Database\Seeders;
 use App\Models\Assignment;
 use App\Models\Employee;
 use App\Models\License;
+use App\Models\User;
 use App\Models\Vendor;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,6 +20,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // 0. Seed Demo Admin User
+        User::firstOrCreate(
+            ['email' => 'admin@licensehub.pro'],
+            [
+                'name' => 'Demo Administrator',
+                'password' => Hash::make('password'),
+            ]
+        );
+
         // 1. Create Vendors
         $jetbrains = Vendor::create([
             'name' => 'JetBrains',

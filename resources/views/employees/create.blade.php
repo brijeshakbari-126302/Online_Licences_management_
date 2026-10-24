@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="panel-body">
-        <form action="{{ route('employees.store') }}" method="POST">
+        <form action="{{ route('employees.store') }}" method="POST" novalidate id="employee-form">
             @csrf
 
             <div class="form-grid-2">

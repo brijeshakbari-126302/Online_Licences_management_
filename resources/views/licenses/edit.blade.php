@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="panel-body">
-        <form action="{{ route('licenses.update', $license) }}" method="POST">
+        <form action="{{ route('licenses.update', $license) }}" method="POST" novalidate id="license-edit-form">
             @csrf
             @method('PUT')
 

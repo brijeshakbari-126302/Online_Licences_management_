@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="panel-body">
-        <form action="{{ route('licenses.store') }}" method="POST">
+        <form action="{{ route('licenses.store') }}" method="POST" novalidate id="license-form">
             @csrf
 
             <!-- Vendor and Application Name -->

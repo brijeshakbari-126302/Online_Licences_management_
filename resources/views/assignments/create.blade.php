@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="panel-body">
-        <form action="{{ route('assignments.store') }}" method="POST">
+        <form action="{{ route('assignments.store') }}" method="POST" novalidate id="assignment-form">
             @csrf
 
             <!-- Software License Selection -->

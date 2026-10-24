@@ -91,13 +91,34 @@
             <span>New License</span>
         </a>
 
-        <!-- User Profile Pill -->
-        <div class="avatar-pill">
-            <div class="avatar-circle">IT</div>
-            <div class="avatar-meta">
-                <span class="avatar-name">IT License Admin</span>
-                <span class="avatar-role">Super Administrator</span>
+        <!-- User Profile Pill & Logout Button -->
+        <div style="display: flex; align-items: center; gap: 0.65rem;">
+            <div class="avatar-pill">
+                <div class="avatar-circle">
+                    @auth
+                        {{ strtoupper(substr(Auth::user()->name, 0, 2)) }}
+                    @else
+                        AD
+                    @endauth
+                </div>
+                <div class="avatar-meta">
+                    <span class="avatar-name">{{ Auth::user()->name ?? 'Administrator' }}</span>
+                    <span class="avatar-role">{{ Auth::user()->email ?? 'admin@licensehub.pro' }}</span>
+                </div>
             </div>
+
+            <!-- Logout Button -->
+            <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
+                @csrf
+                <button type="submit" class="logout-btn" title="Sign out of your session">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    <span>Log Out</span>
+                </button>
+            </form>
         </div>
     </div>
 </header>

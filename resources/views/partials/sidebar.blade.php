@@ -149,7 +149,7 @@
         </div>
     </div>
 
-    <!-- Sidebar Footer / Live Status -->
+    <!-- Sidebar Footer / Live Status & Sign Out -->
     <div class="sidebar-footer">
         <div class="system-status-card">
             <div class="status-dot-pulse"></div>
@@ -158,5 +158,17 @@
                 <div style="font-size: 0.7rem; color: var(--text-dim);">Enterprise Edition v2.4</div>
             </div>
         </div>
+
+        <form action="{{ route('logout') }}" method="POST" style="margin-top: 0.65rem; width: 100%;">
+            @csrf
+            <button type="submit" class="sidebar-logout-btn" title="Sign out of LicenseHub Pro">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+                <span>Sign Out</span>
+            </button>
+        </form>
     </div>
 </aside>

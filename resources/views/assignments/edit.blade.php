@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="panel-body">
-        <form action="{{ route('assignments.update', $assignment) }}" method="POST">
+        <form action="{{ route('assignments.update', $assignment) }}" method="POST" novalidate id="assignment-edit-form">
             @csrf
             @method('PUT')
 

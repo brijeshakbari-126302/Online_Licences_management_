@@ -74,6 +74,12 @@
         </div>
     </div>
 
+    <!-- jQuery & Form Validation -->
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('js/additional-methods.min.js') }}"></script>
+    <script src="{{ asset('js/form-validation.js') }}"></script>
+
     <!-- Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
