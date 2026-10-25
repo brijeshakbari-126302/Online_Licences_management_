@@ -1,214 +1,264 @@
-# LicenseHub Pro &mdash; Enterprise Software Asset & License Management System
+# Software License Management System (*LicenseHub Pro*)
+## Milestone - 1 Submission & Project Specification
 
-[![Laravel Version](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
-[![PHP Version](https://img.shields.io/badge/PHP-8.3-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
-[![Database](https://img.shields.io/badge/Database-SQLite%20%7C%20MySQL-003B57?style=for-the-badge&logo=sqlite&logoColor=white)](https://sqlite.org)
-[![Tests Status](https://img.shields.io/badge/Tests-26%20Passed%20(87%20assertions)-success?style=for-the-badge&logo=phpunit&logoColor=white)](tests/Feature)
-[![Code Style](https://img.shields.io/badge/Code%20Style-Laravel%20Pint%20(PSR--12)-blueviolet?style=for-the-badge)](https://laravel.com/docs/pint)
-
-**LicenseHub Pro** is a centralized, enterprise-grade **Software Asset & License Governance (SAM)** web application built with **Laravel 12 (PHP 8.3)**, **Blade templates**, a custom **Light Mode Design System**, and responsive **jQuery Form Validation**.
-
-It enables IT leadership, asset managers, and finance teams to eliminate expensive unused software seats (*shelfware*), prevent unexpected contract expirations with 30-day urgency radars, track software allocations down to individual employee hardware device IDs, and export audit-ready compliance CSV reports.
+> **Course / Academic Evaluation:** Laravel Project Development  
+> **Student Name:** Brijesh Akbari  
+> **Student ID:** 126302  
+> **Milestone Evaluation:** **Milestone - 1 (5 Marks)**  
+> **Branch:** `milestone-1`
 
 ---
 
-## ⚡ Quick Links & Viva Preparation
+## 📋 Milestone - 1 Evaluation Rubric Compliance
 
-> **🎓 Academic / Viva Voce Preparation:**  
-> A dedicated preparation guide containing an executive pitch, database dictionary, 5-minute live demo script, and the **Top 30 Viva Questions & High-Scoring Answers** is available in [PREPARATION_GUIDE.md](PREPARATION_GUIDE.md).
+This repository branch contains the complete deliverable for **Milestone - 1**, strictly covering all five required criteria:
 
----
+| Rubric Criteria | Marks | Status | Section in this Document |
+| :--- | :---: | :---: | :--- |
+| **1. Problem Statement & Scope** | 1 Mark | **Completed** | [Section 1: Problem Statement & Scope](#1-problem-statement--scope) |
+| **2. Modules** | 1 Mark | **Completed** | [Section 2: Modules Breakdown](#2-modules-breakdown) |
+| **3. Database / Table Design** | 1 Mark | **Completed** | [Section 3: Database & Table Design](#3-database--table-design) |
+| **4. Required Fields** | 1 Mark | **Completed** | [Section 4: Required Fields Specification](#4-required-fields-specification) |
+| **5. Page / Navigation Design** | 1 Mark | **Completed** | [Section 5: Page & Navigation Design](#5-page--navigation-design) |
+| **Total Marks** | **5 / 5 Marks** | **READY FOR EVALUATION** | Full detailed report in [MILESTONE_1_REPORT.md](MILESTONE_1_REPORT.md) |
 
-## 🌟 Key Features & Modules
-
-### 1. 📊 Executive License Dashboard (`/dashboard`)
-- **Key Metrics Radar:** Real-time counts of active subscriptions, total seat capacity, staff count, and software publishers.
-- **Financial Intelligence:** Automated calculation of normalized **Annual Software Spend** across monthly, annual, and perpetual agreements.
-- **Seat Utilization Metric ($U\%$):** Visual percentage indicating software efficiency and flagging wasted shelfware spend.
-- **30-Day Expiry Radar:** Proactive warning cards highlighting contracts requiring renewal within 30 days.
-
-### 2. 🔑 Software License Inventory (`/licenses`)
-- Full CRUD operations with search, vendor filtering, and category filters (Development, Design, Productivity, Cloud, Security).
-- Tracks license keys, serials, seat allocation limits, billing cycles, purchase dates, and expiration dates.
-- High-visibility status badges (`Active`, `Expiring Soon`, `Expired`, `Suspended`).
-
-### 3. 👥 Seat Allocation & Device Governance (`/assignments`)
-- Maps license seats directly to corporate employees and physical workstations/device serial numbers.
-- **Capacity Guardrail:** Enforces hard limits preventing over-allocation when remaining seats reach zero.
-- Historical tracking with revocation dates (`Active` vs `Revoked`) for publisher compliance audits.
-
-### 4. 🏢 Software Vendor Directory (`/vendors`)
-- Centralized publisher catalog (JetBrains, Microsoft, Adobe, Figma, Docker, etc.).
-- Direct contact details, dedicated account manager info, phone numbers, and official vendor support URLs.
-
-### 5. 🧑‍💼 Employee Staff Directory (`/employees`)
-- Corporate employee roster with badge ID (`EMP-XXXX`), department, job title, and active license count.
-
-### 6. 🔄 Contract Renewals Hub (`/renewals`)
-- Proactive 30-day expiration alerts.
-- **1-Click Contract Extension:** Instantly extends software agreements by **+1 Month** or **+1 Year** using Carbon date math, resetting status and updating the audit log.
-
-### 7. 📈 Reports & Streamed CSV Export (`/reports`)
-- Executive summary metrics and category allocation breakdowns.
-- **Zero-Memory CSV Stream:** Streamed downloads (`/reports/export/licenses`, `/reports/export/assignments`, `/reports/export/renewals`) via `php://output` without memory overhead.
-
-### 8. 🛡️ Immutable Audit Activity Trail (`/activity`)
-- Chronological, filterable record of system events: seat allocations, contract renewals, license creations, and settings updates.
-
-### 9. ⚙️ System Settings & Preferences (`/settings`)
-- Persistent enterprise branding (company name, primary admin alert email, currency selector, renewal warning threshold).
-
-### 10. 🌐 Public Website & Secure Authentication
-- **Landing Page (`/`):** Enterprise hero section, feature highlights, and dynamic live metrics.
-- **About Us (`/about`):** Architecture overview, transparency mission, and SLA guarantees.
-- **Contact & Support (`/contact`):** Direct support headquarters info and interactive inquiry submission form.
-- **Sign In (`/login`):** Modern authentication card with **1-Click Demo Credentials Auto-Fill** (`admin@licensehub.pro` / `password`).
-- **Register (`/register`):** Account creation form with password confirmation.
-- **Dedicated Logout Button:** Prominent logout controls in the top navigation bar and sidebar footer.
+> *Note to Evaluator: Milestone - 2 (CRUD Operations, Database Connectivity, Models/Migrations, and Dynamic Forms) and Milestone - 3 (Final Working Project Submission) are developed on the `main` branch.*
 
 ---
 
-## 🎨 Frontend Design & Client-Side Validation
+## 1. Problem Statement & Scope
 
-- **Modern Light Theme:** Built with pure Vanilla CSS and CSS Custom Properties (`public/css/app.css`). Clean surface cards, subtle borders, and zero external CSS framework bloat.
-- **Suppressed Browser Tooltips (`novalidate`):** Completely eliminates browser-native popup balloons.
-- **jQuery Validation Engine:** Real-time client-side evaluation powered by jQuery 3.7.1 and jQuery Validate (`public/js/form-validation.js`), featuring:
-  - Custom SVG inline error badges.
-  - Live feedback on `input`, `change`, and `blur`.
-  - Micro-shake animation and smooth auto-scroll to the first invalid field.
+### 1.1 Problem Statement
+Organizations and software engineering departments purchase commercial software licenses (e.g., JetBrains IDEs, Microsoft 365, Adobe Creative Cloud, Docker, Figma). Managing software licenses through spreadsheets and manual emails creates severe problems:
+- **Shelfware Waste**: 25%–35% of purchased seats remain unassigned or unused, wasting significant budget.
+- **Contract Expirations**: Software tools expire without advance warning, halting team development workflows.
+- **Publisher Compliance Audits**: Lack of central records of workstation serial numbers leaves institutions vulnerable to severe financial penalties during publisher compliance audits.
+- **Hardware Misplacement**: Organizations lose track of which laptop or employee holds expensive perpetual software license keys.
 
----
-
-## 🛠️ Technology Stack
-
-| Component | Technology | Version | Purpose |
-| :--- | :--- | :--- | :--- |
-| **Backend** | PHP | 8.3.x | Core programming language |
-| **Framework** | Laravel | 12.x | MVC web framework, routing, and ORM |
-| **Database** | SQLite / MySQL | 3.x / 8.x | Relational database storage |
-| **Templating** | Blade | Latest | Server-rendered view engine |
-| **Styling** | Vanilla CSS | CSS3 | Custom token-based light design system |
-| **Scripting** | jQuery + jQuery Validate | 3.7.1 / 1.20.0 | Client-side form validation and DOM interactions |
-| **Testing** | PHPUnit | 11.5 | Automated feature and HTTP test suite |
-| **Code Style** | Laravel Pint | 1.x | PSR-12 code style checker and fixer |
+### 1.2 Scope
+**LicenseHub Pro** provides a centralized, secure web application designed to:
+- Centralize all software agreements, activation keys, seat counts, and costs into an organized catalog.
+- Track software publishers, account representatives, and support hotlines.
+- Model the allocation of software seats to staff members, tied to hardware device IDs.
+- Provide proactive 30-day renewal warnings and contract extension planning.
+- Offer clean, responsive navigation across administrative and public portal views.
 
 ---
 
-## 🚀 Installation & Local Setup
+## 2. Modules Breakdown
 
-### Prerequisites
-- PHP $\ge$ 8.2 (PHP 8.3 recommended)
-- Composer $\ge$ 2.0
-- Laragon, XAMPP, or PHP built-in CLI server
-- Git
+The system is designed with **10 core functional modules**:
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/brijeshakbari-126302/Online_Licences_management_.git
-cd Online_Licences_management_
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                   SOFTWARE LICENSE MANAGEMENT SYSTEM                   │
+├────────────────────────┬───────────────────────┬───────────────────────┤
+│ 1. Executive Dashboard │ 2. License Inventory  │ 3. Seat Allocation    │
+├────────────────────────┼───────────────────────┼───────────────────────┤
+│ 4. Vendor Management   │ 5. Staff Directory    │ 6. Renewals Radar     │
+├────────────────────────┼───────────────────────┼───────────────────────┤
+│ 7. Reports & Analytics │ 8. Audit Activity Log │ 9. System Settings    │
+├────────────────────────┴───────────────────────┴───────────────────────┤
+│              10. Public Web Portal & Authentication (Home/Auth)        │
+└────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 2. Install PHP Dependencies
-```bash
-composer install
-```
-
-### 3. Environment Configuration
-```bash
-cp .env.example .env
-php artisan key:generate
-```
-
-### 4. Database Setup & Seeding
-```bash
-# Run migrations and seed sample vendors, licenses, employees, and demo admin
-php artisan migrate --seed
-```
-
-### 5. Start the Development Server
-```bash
-php artisan serve
-```
-Open **[http://localhost:8000](http://localhost:8000)** in your browser.
+1. **Executive Dashboard**: High-level KPI metrics: Active subscriptions, seat utilization rate ($U\%$), total spend, and contracts expiring within 30 days.
+2. **Software License Inventory**: Centralized repository of software applications, license keys, categories, and contract dates.
+3. **Seat Allocation & Governance**: Mapping individual license seats to employees and hardware device tags.
+4. **Vendor Directory**: Catalog of software publishers with support URLs and sales contacts.
+5. **Staff Directory**: Corporate employee roster with employee badge IDs (`EMP-XXXX`) and departments.
+6. **Renewals Hub**: Proactive contract expiration tracking with urgency indicators.
+7. **Reports & Analytics**: Utilization statistics and audit-ready data exports.
+8. **Audit Activity Log**: Chronological audit trail of software assignments and changes.
+9. **System Settings**: Enterprise customization (company branding, alert lead days, currency).
+10. **Public Portal & Authentication**: Public landing page, About Us, Contact & Support form, user registration, and login.
 
 ---
 
-## 🔑 Demo Credentials
+## 3. Database & Table Design
 
-| Role | Corporate Work Email | Password | Quick Action |
-| :--- | :--- | :--- | :--- |
-| **Super Administrator** | `admin@licensehub.pro` | `password` | Click **"Auto-fill"** on the `/login` page |
+### 3.1 Entity Relationship Diagram (ERD)
+
+```mermaid
+erDiagram
+    VENDORS ||--o{ LICENSES : "publishes (1:N)"
+    LICENSES ||--o{ ASSIGNMENTS : "allocated in (1:N)"
+    EMPLOYEES ||--o{ ASSIGNMENTS : "assigned to (1:N)"
+    USERS ||--o{ ACTIVITY_LOGS : "triggers (1:N)"
+
+    VENDORS {
+        bigint id PK
+        string name
+        string website
+        string contact_name
+        string contact_email
+        string contact_phone
+        string support_url
+        text notes
+    }
+
+    LICENSES {
+        bigint id PK
+        bigint vendor_id FK
+        string software_name
+        string license_key
+        string license_type
+        string category
+        int total_seats
+        decimal cost_per_seat
+        string billing_cycle
+        date purchase_date
+        date expiration_date
+        string status
+    }
+
+    EMPLOYEES {
+        bigint id PK
+        string employee_id UK
+        string name
+        string email UK
+        string department
+        string job_title
+        string status
+    }
+
+    ASSIGNMENTS {
+        bigint id PK
+        bigint license_id FK
+        bigint employee_id FK
+        date assigned_date
+        date revoked_date
+        string status
+        string device_info
+    }
+
+    USERS {
+        bigint id PK
+        string name
+        string email UK
+        string password
+        string role
+        string status
+    }
+```
+
+### 3.2 Relational Data Dictionary
+
+#### 1. `vendors` Table (Software Publishers)
+- `id` (BIGINT, PK, Auto-increment) &mdash; Vendor identifier.
+- `name` (VARCHAR, NOT NULL) &mdash; Publisher name (e.g. JetBrains, Microsoft).
+- `website` (VARCHAR, NULLABLE) &mdash; Official website URL.
+- `contact_name` (VARCHAR, NULLABLE) &mdash; Account representative name.
+- `contact_email` (VARCHAR, NULLABLE) &mdash; Direct contact email.
+- `contact_phone` (VARCHAR, NULLABLE) &mdash; Direct telephone number.
+- `support_url` (VARCHAR, NULLABLE) &mdash; Customer support portal link.
+
+#### 2. `licenses` Table (Software Agreements)
+- `id` (BIGINT, PK, Auto-increment) &mdash; Unique license identifier.
+- `vendor_id` (BIGINT, FK &rarr; `vendors.id`) &mdash; Publishing vendor.
+- `software_name` (VARCHAR, NOT NULL) &mdash; Software application title.
+- `license_key` (VARCHAR, NULLABLE) &mdash; Serial or product activation key.
+- `license_type` (VARCHAR, DEFAULT 'Subscription') &mdash; Subscription, Perpetual, Per Seat, Enterprise.
+- `category` (VARCHAR, NULLABLE) &mdash; Development, Design, Productivity, Cloud, Security.
+- `total_seats` (INT, NOT NULL, DEFAULT 1) &mdash; Total purchased seat capacity.
+- `cost_per_seat` (DECIMAL(10,2), NOT NULL) &mdash; Cost per individual seat.
+- `currency` (VARCHAR, DEFAULT 'USD') &mdash; Currency code.
+- `billing_cycle` (VARCHAR, DEFAULT 'annually') &mdash; monthly, annually, quarterly, one-time.
+- `purchase_date` (DATE, NOT NULL) &mdash; Procurement date.
+- `expiration_date` (DATE, NULLABLE) &mdash; Expiration date (NULL for perpetual).
+- `status` (VARCHAR, DEFAULT 'active') &mdash; active, expiring_soon, expired, suspended.
+
+#### 3. `employees` Table (Corporate Staff Members)
+- `id` (BIGINT, PK, Auto-increment) &mdash; Staff ID.
+- `employee_id` (VARCHAR, UNIQUE, NOT NULL) &mdash; Corporate badge identifier (e.g. `EMP-1001`).
+- `name` (VARCHAR, NOT NULL) &mdash; Full employee name.
+- `email` (VARCHAR, UNIQUE, NOT NULL) &mdash; Corporate email address.
+- `department` (VARCHAR, NOT NULL) &mdash; Assigned department (Engineering, Design, IT).
+- `job_title` (VARCHAR, NOT NULL) &mdash; Job designation.
+- `status` (VARCHAR, DEFAULT 'active') &mdash; active, inactive.
+
+#### 4. `assignments` Table (Seat Allocations)
+- `id` (BIGINT, PK, Auto-increment) &mdash; Assignment record ID.
+- `license_id` (BIGINT, FK &rarr; `licenses.id`) &mdash; Allocated software.
+- `employee_id` (BIGINT, FK &rarr; `employees.id`) &mdash; Staff recipient.
+- `assigned_date` (DATE, NOT NULL) &mdash; Allocation date.
+- `revoked_date` (DATE, NULLABLE) &mdash; Return / revocation date.
+- `status` (VARCHAR, DEFAULT 'active') &mdash; active, revoked.
+- `device_info` (VARCHAR, NULLABLE) &mdash; Workstation serial or hostname tag.
+
+#### 5. `users` Table (System Administrators)
+- `id` (BIGINT, PK, Auto-increment) &mdash; User ID.
+- `name` (VARCHAR, NOT NULL) &mdash; Administrator name.
+- `email` (VARCHAR, UNIQUE, NOT NULL) &mdash; Login email address.
+- `password` (VARCHAR, NOT NULL) &mdash; Hashed password.
+- `role` (VARCHAR, DEFAULT 'admin') &mdash; admin, it_staff.
 
 ---
 
-## 🧪 Automated Testing
+## 4. Required Fields Specification
 
-The project includes **26 comprehensive Feature tests** validating all HTTP endpoints, session logic, authentication, form validations, and CSV streaming:
+Every form in the system enforces strict required field constraints indicated by red asterisks (`*`):
 
-```bash
-# Run the complete test suite
-php artisan test --compact
-
-# Run code style formatting check
-vendor/bin/pint --test
-```
-
-```
-Test Suite Execution Result:
-✓ ExampleTest .............................. 1 passed
-✓ LicenseManagementTest .................... 8 passed
-✓ PendingPagesTest ......................... 6 passed
-✓ PublicAndAuthPagesTest .................. 11 passed
-Total: 26 passed (87 assertions)
-```
+| Form Interface | Required (Mandatory) Fields | Optional Fields |
+| :--- | :--- | :--- |
+| **New License** (`/licenses/create`) | `software_name`, `vendor_id`, `license_type`, `total_seats` ($\ge 1$), `cost_per_seat` ($\ge 0$), `billing_cycle`, `purchase_date`, `expiration_date` | `license_key`, `category`, `notes` |
+| **Assign Seat** (`/assignments/create`)| `license_id` (seats $> 0$), `employee_id`, `assigned_date`, `device_info` | `notes` |
+| **Register Vendor** (`/vendors/create`) | `name` | `website`, `contact_name`, `contact_email`, `contact_phone`, `support_url`, `notes` |
+| **Register Staff** (`/employees/create`) | `employee_id` (unique), `name`, `email` (unique), `department`, `job_title` | `phone`, `status` |
+| **Sign In** (`/login`) | `email`, `password` | `remember` session |
+| **User Registration** (`/register`) | `name`, `email` (unique), `password` ($\ge 8$ chars), `password_confirmation` | &mdash; |
+| **Contact Support** (`/contact`) | `name`, `email`, `category`, `subject`, `message` ($\ge 10$ chars) | &mdash; |
 
 ---
 
-## 📂 Project Structure
+## 5. Page & Navigation Design
+
+### 5.1 Sitemap & Navigation Flow
 
 ```
-software-license-management/
-├── app/
-│   ├── Http/Controllers/
-│   │   ├── ActivityLogController.php   # Audit trail and event filtering
-│   │   ├── AssignmentController.php    # Seat allocation and capacity checks
-│   │   ├── AuthController.php          # Login, Register, Logout
-│   │   ├── DashboardController.php     # KPIs, spend math, expiry radar
-│   │   ├── EmployeeController.php      # Staff roster management
-│   │   ├── HomeController.php          # Public pages (Home, About, Contact)
-│   │   ├── LicenseController.php       # License CRUD and inventory
-│   │   ├── RenewalController.php       # 1-click contract extensions
-│   │   ├── ReportController.php        # Analytics and streamed CSV exports
-│   │   ├── SettingController.php       # Persistent enterprise preferences
-│   │   └── VendorController.php        # Software publishers directory
-│   └── Models/
-│       ├── ActivityLog.php             # Audit log records
-│       ├── Assignment.php              # Seat assignment pivot model
-│       ├── ContactInquiry.php          # Public contact form inquiries
-│       ├── Employee.php                # Corporate staff members
-│       ├── License.php                 # Software license entity
-│       ├── Setting.php                 # Key-value system settings
-│       ├── User.php                    # Authenticated admin accounts
-│       └── Vendor.php                  # Software vendors
-├── database/
-│   ├── migrations/                     # Schema definition files
-│   └── seeders/DatabaseSeeder.php      # Test datasets and demo admin
-├── public/
-│   ├── css/app.css                     # Custom light design system
-│   └── js/
-│       ├── jquery.min.js               # jQuery library
-│       ├── jquery.validate.min.js      # jQuery Validation Plugin
-│       ├── additional-methods.min.js   # Extended validation rules
-│       └── form-validation.js          # Project-wide validation engine
-├── resources/views/                    # Blade presentation templates
-├── routes/web.php                      # Application route declarations
-├── tests/Feature/                      # PHPUnit feature test suite
-├── PREPARATION_GUIDE.md                # Viva voce & exam defense guide
-└── README.md                           # Master project documentation
+                              PUBLIC PORTAL
+                     ┌──────────────┴──────────────┐
+                     ▼                             ▼
+                Home Page (/)              About Us (/about)
+                     │                             │
+                     ├──────────────┬──────────────┤
+                     ▼              ▼              ▼
+             Contact (/contact)  Login (/login)  Register (/register)
+                                    │
+                            [AUTHENTICATION]
+                                    │
+                                    ▼
+                        ADMINISTRATIVE WORKSPACE
+                     ┌──────────────┴──────────────┐
+                     │                             │
+         EXECUTIVE DASHBOARD (/dashboard)  SYSTEM SETTINGS (/settings)
+                     │
+       ┌─────────────┼─────────────┬─────────────┬─────────────┐
+       ▼             ▼             ▼             ▼             ▼
+   Licenses     Assignments     Vendors      Employees     Renewals Hub
+  (/licenses)  (/assignments)  (/vendors)   (/employees)   (/renewals)
 ```
+
+### 5.2 Navigation Layout Architecture
+
+The page design uses an ultra-clean, modern **Light Mode Design System** (`public/css/app.css`):
+
+1. **Persistent Sidebar Navigation (`#appSidebar`)**:
+   - Brand logo & Pro badge.
+   - Categorized sections: Overview, License Management, Directory, Governance & Settings.
+   - Footer system monitor indicator and full-width sign-out button.
+
+2. **Top Navigation Bar (`.topbar`)**:
+   - Location breadcrumbs (e.g. `Dashboard / Licenses / Add New`).
+   - Quick action shortcuts: `Assign Seat` and `+ New License`.
+   - Administrator avatar pill and dedicated red **Log Out** button.
+
+3. **Public Header & Footer (`.pub-header`, `.pub-footer`)**:
+   - Fixed header with brand icon, navigation links, and auth buttons.
+   - Comprehensive footer with legal terms, platform links, and status badge.
 
 ---
 
-## 📜 License & Acknowledgments
-
-This project is open-source software licensed under the **[MIT License](LICENSE)**. Built for enterprise software governance and university engineering defense.
+## 📄 Full Milestone 1 Report
+For detailed database schemas, validation dictionaries, and wireframe flows, please see the complete **[MILESTONE_1_REPORT.md](MILESTONE_1_REPORT.md)**.
