@@ -82,6 +82,8 @@ erDiagram
     LICENSES ||--o{ ASSIGNMENTS : "allocated in (1:N)"
     EMPLOYEES ||--o{ ASSIGNMENTS : "assigned to (1:N)"
     USERS ||--o{ ACTIVITY_LOGS : "triggers (1:N)"
+    USERS ||--o{ SESSIONS : "starts (1:N)"
+    USERS ||--o{ PASSWORD_RESET_TOKENS : "requests (1:1)"
 
     VENDORS {
         bigint id PK
@@ -180,6 +182,21 @@ erDiagram
         string ip_address
         timestamp created_at
     }
+
+    PASSWORD_RESET_TOKENS {
+        string email PK
+        string token
+        timestamp created_at
+    }
+
+    SESSIONS {
+        string id PK
+        bigint user_id FK
+        string ip_address
+        text user_agent
+        longtext payload
+        int last_activity
+    }
 ```
 
 ### 3.2 Data Dictionary (Tables & Attributes)
@@ -244,17 +261,35 @@ erDiagram
 | `notes` | TEXT | NULLABLE | Allocation reason or ticket reference |
 | `created_at` / `updated_at` | TIMESTAMP | NULLABLE | System audit timestamps |
 
-#### Table 5: `users` (System Administrators)
+#### Table 5: `users` (Login Credentials & User Accounts)
 | Column Name | Data Type | Constraints | Description |
 | :--- | :--- | :--- | :--- |
-| `id` | BIGINT UNSIGNED | Primary Key, Auto-increment | Administrator ID |
-| `name` | VARCHAR(255) | NOT NULL | Admin full name |
-| `email` | VARCHAR(255) | UNIQUE, NOT NULL | Login email address |
-| `password` | VARCHAR(255) | NOT NULL | Hashed password (Bcrypt) |
-| `role` | VARCHAR(50) | DEFAULT 'admin' | Role: super_admin, admin, it_staff |
-| `status` | VARCHAR(50) | DEFAULT 'active' | Account state: active, suspended |
-| `remember_token` | VARCHAR(100) | NULLABLE | Session remember token |
-| `created_at` / `updated_at` | TIMESTAMP | NULLABLE | System audit timestamps |
+| `id` | BIGINT UNSIGNED | Primary Key, Auto-increment | Unique user account ID |
+| `name` | VARCHAR(255) | NOT NULL | User's full name |
+| `email` | VARCHAR(255) | UNIQUE, NOT NULL | Login email address (credential username) |
+| `email_verified_at`| TIMESTAMP | NULLABLE | Email verification timestamp |
+| `password` | VARCHAR(255) | NOT NULL | Encrypted password hash (Bcrypt / Argon2) |
+| `role` | VARCHAR(50) | DEFAULT 'admin' | User permission role (`super_admin`, `admin`, `viewer`) |
+| `status` | VARCHAR(50) | DEFAULT 'active' | Account state (`active`, `suspended`, `pending`) |
+| `remember_token` | VARCHAR(100) | NULLABLE | "Remember Me" persistent authentication token |
+| `created_at` / `updated_at` | TIMESTAMP | NULLABLE | Account creation and last profile modification |
+
+#### Table 6: `password_reset_tokens` (Forgot Password / Password Recovery)
+| Column Name | Data Type | Constraints | Description |
+| :--- | :--- | :--- | :--- |
+| `email` | VARCHAR(255) | Primary Key, Foreign Key &rarr; `users.email` | User email requesting password reset |
+| `token` | VARCHAR(255) | NOT NULL | Cryptographic HMAC SHA-256 secure reset token |
+| `created_at` | TIMESTAMP | NULLABLE | Token generation timestamp (used for 60-min expiry check) |
+
+#### Table 7: `sessions` (Login Session Management & Device Tracking)
+| Column Name | Data Type | Constraints | Description |
+| :--- | :--- | :--- | :--- |
+| `id` | VARCHAR(255) | Primary Key | Unique random session identifier |
+| `user_id` | BIGINT UNSIGNED | NULLABLE, Foreign Key &rarr; `users.id` | Authenticated user ID (NULL for guest visitors) |
+| `ip_address` | VARCHAR(45) | NULLABLE | Client IPv4 / IPv6 address |
+| `user_agent` | TEXT | NULLABLE | Browser client, OS, and device string |
+| `payload` | LONGTEXT | NOT NULL | Serialized and encrypted session state payload |
+| `last_activity` | INTEGER | NOT NULL, INDEX | Unix timestamp of user's most recent HTTP request |
 
 ---
 
@@ -296,15 +331,31 @@ Every form in the application enforces strict validation boundaries:
   - `job_title`: Text, mandatory (e.g. `Senior Developer`).
 - **Optional Fields**: `phone`, `status`.
 
-### Form 5: User Registration & Sign In (`auth`)
-- **Login Required Fields**:
-  - `email`: Mandatory, valid email format.
-  - `password`: Mandatory.
-- **Register Required Fields**:
-  - `name`: Mandatory, min 2 chars.
-  - `email`: Mandatory, valid email, unique in `users`.
-  - `password`: Mandatory, minimum 8 characters.
-  - `password_confirmation`: Mandatory, must strictly match `password`.
+### Form 5: User Sign In / Login Credentials (`/login`)
+- **Required Fields**:
+  - `email`: Text / Email format, mandatory (`required|email`).
+  - `password`: Password format, mandatory (`required|string`).
+- **Optional Fields**:
+  - `remember`: Checkbox boolean (keeps session active for 30 days via `remember_token`).
+
+### Form 6: User Registration (`/register`)
+- **Required Fields**:
+  - `name`: Text, mandatory, min 2 chars, max 255 chars (`required|string|max:255`).
+  - `email`: Email, mandatory, must be valid email syntax, unique across `users` table (`required|email|unique:users,email`).
+  - `password`: Password, mandatory, minimum 8 characters (`required|string|min:8`).
+  - `password_confirmation`: Password, mandatory, must match `password` identically (`required|same:password`).
+- **Optional Fields**:
+  - `terms`: Acceptance checkbox for organizational IT policies.
+
+### Form 7: Forgot Password & Password Reset (`/forgot-password` & `/reset-password`)
+- **Step 1: Request Password Reset Link (`/forgot-password`)**:
+  - `email`: Mandatory, valid email, must exist in `users` table (`required|email|exists:users,email`).
+  - *Action*: System generates unique cryptographic token in `password_reset_tokens` table valid for 60 minutes.
+- **Step 2: Submit New Password (`/reset-password`)**:
+  - `token`: Hidden field, mandatory cryptographic string verification.
+  - `email`: Mandatory, must match the requested token in `password_reset_tokens`.
+  - `password`: Mandatory, minimum 8 characters (`required|string|min:8`).
+  - `password_confirmation`: Mandatory, must match new `password` (`required|same:password`).
 
 ---
 
