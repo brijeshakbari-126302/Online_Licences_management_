@@ -1,6 +1,8 @@
-# Software License Management System (*LicenseHub Pro*)
+# Software License Platform (*LicenseHub Pro*)
 ## Milestone - 1 Submission & Project Specification
 
+> **Assigned Topic:** Software License  
+> **Official Topic Definition:** *"Implement a practical Software License scenario in which all major data-management activities are handled through Laravel Blade templates and CRUD operations."*  
 > **Course / Academic Evaluation:** Laravel Project Development  
 > **Student Name:** Brijesh Akbari  
 > **Student ID:** 126302  
@@ -28,14 +30,22 @@ This repository branch contains the complete deliverable for **Milestone - 1**, 
 
 ## 1. Problem Statement & Scope
 
-### 1.1 Problem Statement
+### 1.1 Topic Definition & Practical Scenario Mapping
+The project implements the prescribed academic syllabus definition:
+> **"Implement a practical Software License scenario in which all major data-management activities are handled through Laravel Blade templates and CRUD operations."**
+
+- **Scenario Focus**: Real-world software license lifecycle management covering software agreements, serial numbers, categories, seat capacities, vendor directories, contract renewals, and staff seat allocations.
+- **Blade & CRUD Data-Management**: All operations are conducted via structured Laravel Blade templates (`resources/views/licenses/`) equipped with forms, CSRF tokens, `@method()` overrides, and field validations.
+- **Milestone 1 Scope**: Strictly focuses on delivering the comprehensive design, database schema, required field rules, and navigation architecture for Milestone 1 evaluation.
+
+### 1.2 Problem Statement
 Organizations and software engineering departments purchase commercial software licenses (e.g., JetBrains IDEs, Microsoft 365, Adobe Creative Cloud, Docker, Figma). Managing software licenses through spreadsheets and manual emails creates severe problems:
 - **Shelfware Waste**: 25%–35% of purchased seats remain unassigned or unused, wasting significant budget.
 - **Contract Expirations**: Software tools expire without advance warning, halting team development workflows.
 - **Publisher Compliance Audits**: Lack of central records of workstation serial numbers leaves institutions vulnerable to severe financial penalties during publisher compliance audits.
 - **Hardware Misplacement**: Organizations lose track of which laptop or employee holds expensive perpetual software license keys.
 
-### 1.2 Scope
+### 1.3 Scope
 **LicenseHub Pro** provides a centralized, secure web application designed to:
 - Centralize all software agreements, activation keys, seat counts, and costs into an organized catalog.
 - Track software publishers, account representatives, and support hotlines.
