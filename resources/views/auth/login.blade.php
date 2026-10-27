@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Log In - LicenseHub Pro</title>
+    <title>Log In - LicenseHub Portal</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,10 +26,10 @@
                     </svg>
                 </div>
                 <span>License<span style="color: var(--primary);">Hub</span></span>
-                <span class="brand-badge">PRO</span>
+                <span class="brand-badge">PORTAL</span>
             </a>
-            <h1>Sign In to Dashboard</h1>
-            <p>Access your organization's software license inventory</p>
+            <h1>Sign In to Portal</h1>
+            <p>Access the software license catalog & activation portal</p>
         </div>
 
         <!-- Demo Credentials Callout -->

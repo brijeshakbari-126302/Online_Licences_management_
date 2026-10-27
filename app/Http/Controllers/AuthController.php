@@ -41,7 +41,7 @@ class AuthController extends Controller
 
             return redirect()
                 ->intended(route('dashboard'))
-                ->with('success', 'Welcome back! You have successfully signed in to LicenseHub Pro.');
+                ->with('success', 'Welcome back! You have successfully signed in to LicenseHub Portal.');
         }
 
         return back()
@@ -84,7 +84,7 @@ class AuthController extends Controller
 
         return redirect()
             ->route('dashboard')
-            ->with('success', "Welcome to LicenseHub Pro, {$user->name}! Your account has been registered successfully.");
+            ->with('success', "Welcome to LicenseHub Portal, {$user->name}! Your account has been registered successfully.");
     }
 
     /**

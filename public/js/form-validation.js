@@ -1,5 +1,5 @@
 /**
- * LicenseHub Pro - Global jQuery Form Validation
+ * LicenseHub Portal - Global jQuery Form Validation
  * Completely suppresses browser/bootstrap native tooltips (novalidate)
  * and provides responsive, real-time jQuery validation across all forms.
  */
@@ -7,7 +7,7 @@
     'use strict';
 
     if (typeof $ === 'undefined') {
-        console.warn('LicenseHub Pro: jQuery is required for client-side form validation.');
+        console.warn('LicenseHub Portal: jQuery is required for client-side form validation.');
         return;
     }
 
