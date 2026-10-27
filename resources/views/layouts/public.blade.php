@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'LicenseHub Pro') - Enterprise Software License Management</title>
+    <title>@yield('title', 'LicenseHub') - Digital Software License Catalog & Activation Portal</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,7 +28,7 @@
                     </svg>
                 </div>
                 <span>License<span style="color: var(--primary);">Hub</span></span>
-                <span class="brand-badge">PRO</span>
+                <span class="brand-badge">PORTAL</span>
             </a>
 
             <nav>
@@ -104,7 +104,7 @@
                         </div>
                         <span>License<span style="color: var(--primary);">Hub</span></span>
                     </div>
-                    <p>The centralized, enterprise-grade software license & asset management system built for IT compliance, seat optimization, and contract governance.</p>
+                    <p>The centralized software license catalog & activation portal built for tool discovery, device seat allocation, and key governance.</p>
                 </div>
 
                 <div class="pub-footer-col">
@@ -141,7 +141,7 @@
             </div>
 
             <div class="pub-footer-bottom">
-                <div>&copy; {{ date('Y') }} LicenseHub Pro. All software assets and trademarks belong to their respective publishers.</div>
+                <div>&copy; {{ date('Y') }} LicenseHub Portal. All software assets and trademarks belong to their respective publishers.</div>
                 <div>Designed & Built with Laravel {{ app()->version() }} &bull; PHP {{ PHP_VERSION }}</div>
             </div>
         </div>

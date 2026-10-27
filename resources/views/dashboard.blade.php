@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Executive Dashboard')
+@section('title', 'Catalog & Activation Dashboard')
 
 @section('content')
 <!-- Page Header -->
 <div class="page-header">
     <div class="page-title-group">
-        <h1>Executive License Dashboard</h1>
-        <p class="page-subtitle">Real-time visibility into enterprise software assets, compliance, seats, and renewals.</p>
+        <h1>License Catalog Dashboard</h1>
+        <p class="page-subtitle">Real-time visibility into cataloged software assets, available seats, device activations, and renewals.</p>
     </div>
     <div class="page-actions">
         <a href="{{ route('licenses.create') }}" class="btn btn-primary">

@@ -9,7 +9,7 @@
                 </svg>
             </div>
             <span>License<span style="color: var(--primary);">Hub</span></span>
-            <span class="brand-badge">PRO</span>
+            <span class="brand-badge">PORTAL</span>
         </a>
     </div>
 
@@ -49,7 +49,7 @@
 
         <!-- License Management Section -->
         <div>
-            <div class="nav-section-title">License Management</div>
+            <div class="nav-section-title">Software Catalog & Seats</div>
             <ul class="nav-list">
                 <li class="nav-item">
                     <a href="{{ route('licenses.index') }}" class="nav-link {{ request()->routeIs('licenses.*') ? 'active' : '' }}">
@@ -59,7 +59,7 @@
                                 <circle cx="8" cy="8.5" r="1.5"></circle>
                             </svg>
                         </span>
-                        <span>Software Licenses</span>
+                        <span>Software Catalog</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -71,7 +71,7 @@
                                 <polyline points="16 11 18 13 22 9"></polyline>
                             </svg>
                         </span>
-                        <span>Seat Assignments</span>
+                        <span>Seat Activations</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -82,7 +82,7 @@
                                 <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
                             </svg>
                         </span>
-                        <span>Renewals & Expirations</span>
+                        <span>Renewal Tracker</span>
                     </a>
                 </li>
             </ul>
@@ -90,7 +90,7 @@
 
         <!-- Directory Section -->
         <div>
-            <div class="nav-section-title">Directory & Vendors</div>
+            <div class="nav-section-title">Publishers & Directory</div>
             <ul class="nav-list">
                 <li class="nav-item">
                     <a href="{{ route('vendors.index') }}" class="nav-link {{ request()->routeIs('vendors.*') ? 'active' : '' }}">
@@ -100,7 +100,7 @@
                                 <polyline points="9 22 9 12 15 12 15 22"></polyline>
                             </svg>
                         </span>
-                        <span>Software Vendors</span>
+                        <span>Software Publishers</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -113,7 +113,7 @@
                                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                             </svg>
                         </span>
-                        <span>Employee Staff</span>
+                        <span>Staff Directory</span>
                     </a>
                 </li>
             </ul>
@@ -154,14 +154,14 @@
         <div class="system-status-card">
             <div class="status-dot-pulse"></div>
             <div>
-                <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-main);">License Monitor Live</div>
-                <div style="font-size: 0.7rem; color: var(--text-dim);">Enterprise Edition v2.4</div>
+                <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-main);">Catalog Monitor Live</div>
+                <div style="font-size: 0.7rem; color: var(--text-dim);">Portal Edition v2.4</div>
             </div>
         </div>
 
         <form action="{{ route('logout') }}" method="POST" style="margin-top: 0.65rem; width: 100%;">
             @csrf
-            <button type="submit" class="sidebar-logout-btn" title="Sign out of LicenseHub Pro">
+            <button type="submit" class="sidebar-logout-btn" title="Sign out of LicenseHub Portal">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                     <polyline points="16 17 21 12 16 7"></polyline>

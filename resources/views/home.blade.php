@@ -1,28 +1,28 @@
 @extends('layouts.public')
 
-@section('title', 'Centralized Software License Management System')
+@section('title', 'Centralized Software License Catalog & Activation Portal')
 
 @section('content')
 <!-- Hero Section -->
 <section class="pub-hero">
     <div class="pub-hero-badge">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-        Enterprise Software Asset & License Governance
+        Digital Software Catalog & Seat Activation Portal
     </div>
 
     <h1>
-        Centralize, Track & Optimize Your <br>
+        Discover, Activate & Track Your <br>
         <span class="gradient-text">Software Licenses</span>
     </h1>
 
     <p class="pub-hero-subtitle">
-        Eliminate expensive shelfware, prevent surprise contract expirations, and track license keys and seats deployed across your company's workstations and staff.
+        A unified software catalog for engineering and design teams. Browse licensed tools, activate seats on your device, and manage activation keys seamlessly.
     </p>
 
     <div class="pub-hero-actions">
-        <a href="{{ route('dashboard') }}" class="btn btn-primary" style="padding: 0.85rem 1.75rem; font-size: 0.95rem;">
+        <a href="{{ route('licenses.index') }}" class="btn btn-primary" style="padding: 0.85rem 1.75rem; font-size: 0.95rem;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-            Explore Live Dashboard &rarr;
+            Browse Software Catalog &rarr;
         </a>
         <a href="{{ route('register') }}" class="btn btn-secondary" style="padding: 0.85rem 1.75rem; font-size: 0.95rem;">
             Sign In / Register Free
@@ -88,8 +88,8 @@
 <!-- Features Grid -->
 <section class="pub-features-section">
     <div class="pub-section-header">
-        <h2>Engineered for Modern IT Asset Governance</h2>
-        <p>Everything your enterprise needs to oversee applications, control spend, and maintain pristine vendor relationships.</p>
+        <h2>Engineered for Modern Software Discovery & Governance</h2>
+        <p>Everything your teams need to explore licensed software, activate seats, and maintain pristine vendor relationships.</p>
     </div>
 
     <div class="pub-features-grid">
@@ -98,7 +98,7 @@
             <div class="pub-feature-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h16v3M4 12v-2h16v2M4 17v-2h16v2M4 20h16"></path><circle cx="8" cy="8.5" r="1.5"></circle></svg>
             </div>
-            <h3 class="pub-feature-title">Software Catalog Management</h3>
+            <h3 class="pub-feature-title">Software Catalog & Discovery</h3>
             <p class="pub-feature-desc">Record license keys, agreement tiers, seat quantities, purchase dates, and billing intervals (monthly/annual) in one centralized repository.</p>
         </div>
 
@@ -107,7 +107,7 @@
             <div class="pub-feature-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><polyline points="16 11 18 13 22 9"></polyline></svg>
             </div>
-            <h3 class="pub-feature-title">Staff Seat Allocations</h3>
+            <h3 class="pub-feature-title">Device Seat Activations</h3>
             <p class="pub-feature-desc">Link software licenses to staff members, log workstation hardware models, track deployment dates, and revoke unused seats with a single click.</p>
         </div>
 
@@ -116,7 +116,7 @@
             <div class="pub-feature-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
             </div>
-            <h3 class="pub-feature-title">Renewal Hub & Expiration Center</h3>
+            <h3 class="pub-feature-title">Renewal Tracker & Expiration Center</h3>
             <p class="pub-feature-desc">Proactive warning banners for licenses expiring in 30, 60, or 90 days. Rapid one-click +1 Year / +1 Month extension actions prevent software blackouts.</p>
         </div>
 
@@ -152,10 +152,10 @@
 <!-- Final Call to Action -->
 <section style="background: var(--bg-surface); border-top: 1px solid var(--border-subtle); padding: 4.5rem 1.5rem; text-align: center;">
     <div style="max-width: 650px; margin: 0 auto;">
-        <h2 style="font-size: 2.2rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem;">Take Full Control of Your IT Licenses Today</h2>
-        <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 2rem;">Join hundreds of organizations optimizing software seat utilization and preventing compliance exposure with LicenseHub Pro.</p>
+        <h2 style="font-size: 2.2rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem;">Explore the Software License Catalog Today</h2>
+        <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 2rem;">Discover available commercial tools, activate seats on your workstation, and track contract renewals with LicenseHub.</p>
         <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-            <a href="{{ route('dashboard') }}" class="btn btn-primary" style="padding: 0.8rem 1.75rem;">Launch Dashboard</a>
+            <a href="{{ route('licenses.index') }}" class="btn btn-primary" style="padding: 0.8rem 1.75rem;">Browse Catalog</a>
             <a href="{{ route('contact') }}" class="btn btn-secondary" style="padding: 0.8rem 1.75rem;">Contact Support</a>
         </div>
     </div>

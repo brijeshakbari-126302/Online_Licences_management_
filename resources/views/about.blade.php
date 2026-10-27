@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'About Us - Enterprise License Management')
+@section('title', 'About Us - Software License Catalog & Activation Portal')
 
 @section('content')
 <!-- Hero Section -->
@@ -16,7 +16,7 @@
     </h1>
 
     <p class="pub-hero-subtitle">
-        LicenseHub Pro was created to solve a multi-billion dollar enterprise challenge: uncontrolled software sprawl, unexpected subscription renewals, and unassigned software seats.
+        LicenseHub was created to provide a unified software catalog and activation portal for organizations: discovering licensed tools, activating seats on workstations, and eliminating shelfware.
     </p>
 </section>
 
@@ -49,7 +49,7 @@
             </div>
             <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem;">Guaranteed Audit Compliance</h3>
             <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6;">
-                Software publisher audits can result in severe financial penalties. LicenseHub Pro keeps full historical logs and device tokens ready for instant CSV export.
+                Software publisher audits can result in severe financial penalties. LicenseHub keeps full seat activation logs and device tokens ready for instant verification.
             </p>
         </div>
     </div>
@@ -58,7 +58,7 @@
     <div class="panel-card" style="padding: 3rem 2.5rem; margin-bottom: 3rem;">
         <h2 style="font-size: 1.8rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem;">Platform Architecture & Reliability</h2>
         <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem;">
-            LicenseHub Pro is engineered using robust, test-driven Laravel design patterns and PHP 8.3 type safety. The database schema strictly enforces relational integrity across software publishers, license keys, corporate departments, and employee workstations.
+            LicenseHub is engineered using robust, test-driven Laravel design patterns and PHP 8.3 type safety. The database schema strictly enforces relational integrity across software publishers, license keys, corporate departments, and employee workstations.
         </p>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem;">

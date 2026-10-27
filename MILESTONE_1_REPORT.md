@@ -1,106 +1,72 @@
 # Milestone 1: Problem Statement, Scope, Database Design & Navigation
 
-> **Assigned Topic:** Software License  
-> **Official Topic Definition:** *"Implement a practical Software License scenario in which all major data-management activities are handled through Laravel Blade templates and CRUD operations."*  
-> **Project Title:** Software License Platform (*LicenseHub Pro*)  
-> **Course / Academic Evaluation:** Laravel Project Development  
-> **Milestone Evaluation:** Milestone - 1 (5 Marks)  
+> **Project Title:** Digital Software License Catalog & Activation Portal (*LicenseHub*)  
+> **Course / Evaluator:** Laravel Project Development  
+> **Milestone:** Milestone - 1 (5 Marks)  
 > **Submitted By:** Brijesh Akbari (126302)  
 > **Repository Branch:** `milestone-1`
 
 ---
 
-## 📋 Evaluation Rubric Alignment: Milestone - 1 (5 Marks)
-
-This submission fulfills all five components specified in the evaluation rubric for **Milestone - 1**:
-
-| Rubric Component | Marks | Evaluation Focus | Deliverable Section |
-| :--- | :---: | :--- | :--- |
-| **1. Problem Statement & Scope** | 1 Mark | Industry background, operational challenges, project scope & scenario | [Section 1](#1-problem-statement--scope) |
-| **2. Modules** | 1 Mark | Functional module breakdown, inputs, processing & outputs | [Section 2](#2-modules-breakdown) |
-| **3. Database / Table Design** | 1 Mark | Relational ERD diagram and complete data dictionary (types, keys, constraints) | [Section 3](#3-database--table-design) |
-| **4. Required Fields** | 1 Mark | Form field boundaries, required vs. optional fields, validation rules | [Section 4](#4-required-fields-specification) |
-| **5. Page / Navigation Design** | 1 Mark | Sitemap hierarchy, user navigation flow, sidebar/topbar architecture | [Section 5](#5-page--navigation-design) |
-| **Total Marks** | **5 / 5** | **Milestone - 1 Deliverables Complete** | Full documentation below |
-
----
-
 ## Table of Contents
-- [1. Problem Statement & Scope](#1-problem-statement--scope)
-  - [1.1 Topic Definition & Practical Scenario Mapping](#11-topic-definition--practical-scenario-mapping)
-  - [1.2 Problem Statement](#12-problem-statement)
-  - [1.3 Project Scope](#13-project-scope)
-- [2. Modules Breakdown](#2-modules-breakdown)
-- [3. Database & Table Design (Schema & ERD)](#3-database--table-design)
-- [4. Required Fields Specification](#4-required-fields-specification)
-- [5. Page & Navigation Design](#5-page--navigation-design)
-- [6. Milestone 1 Rubric Compliance Checklist](#6-milestone-1-rubric-compliance-checklist)
+1. [Problem Statement & Scope](#1-problem-statement--scope)
+2. [Modules Breakdown](#2-modules-breakdown)
+3. [Database & Table Design (Schema & ERD)](#3-database--table-design)
+4. [Required Fields Specification](#4-required-fields-specification)
+5. [Page & Navigation Design](#5-page--navigation-design)
+6. [Milestone 1 Rubric Compliance Checklist](#6-milestone-1-rubric-compliance-checklist)
 
 ---
 
 ## 1. Problem Statement & Scope
 
-### 1.1 Topic Definition & Practical Scenario Mapping
+### 1.1 Problem Statement
+In modern engineering teams, design studios, and software companies, developers and employees rely on dozens of commercial software licenses (e.g., JetBrains IDEs, Microsoft 365, Adobe Creative Cloud, Docker, Figma Pro). However, without a structured digital catalog and activation workflow, organizations face several practical obstacles:
 
-The project implements the prescribed topic definition:
-> **"Implement a practical Software License scenario in which all major data-management activities are handled through Laravel Blade templates and CRUD operations."**
+1. **Lack of a Centralized Software Catalog**: Staff members do not have a single internal portal to discover what software tools the company already owns, leading to duplicate license purchases and unutilized seats (*shelfware*).
+2. **Untracked License Keys & Activations**: License activation keys are often scattered across emails, chat channels, or spreadsheets. IT teams lose track of which laptop, workstation, or employee has activated a specific seat.
+3. **Unexpected License Expirations**: Software tools expire without warning because validity dates and renewal periods are not actively monitored in a unified catalog.
+4. **Data Disorganization**: Without standardized data-management activities (CRUD), adding new software releases, updating seat quotas, modifying vendor terms, or retiring deprecated tools is error-prone.
 
-#### Practical Scenario Realization:
-1. **Core Domain (Software License)**: Focuses directly on software licensing lifecycle: publisher vendors (e.g., JetBrains, Microsoft, Adobe), license categories, serial keys, license types (Subscription vs. Perpetual), seat allocations, expiration tracking, and cost management.
-2. **Major Data-Management Activities (CRUD)**: All core data entities (`licenses`, `vendors`, `employees`, `assignments`) feature full Create, Read (searchable listings + detailed inspection), Update, and Delete capabilities.
-3. **Laravel Blade Templates**: All interactions, forms, validation errors, and lists are rendered via native Laravel Blade templates (`.blade.php`), using `@csrf`, `@method()`, `@error`, flash session banners, and reusable layout components.
-4. **Milestone 1 Deliverable**: Strictly fulfills the Milestone 1 phase (problem statement, scope, modules, schema/ERD, required fields, and page navigation).
+### 1.2 Practical Scenario & Project Scope
+Instead of an overwhelming, bloated enterprise ERP system, this project implements a clean, practical **Digital Software License Catalog & Activation Portal** (*LicenseHub*). 
 
-### 1.2 Problem Statement
-Modern businesses and engineering institutions rely heavily on commercial software licenses (e.g., JetBrains IDEs, Microsoft 365, Adobe Creative Cloud, Docker, Figma, Autodesk). However, organizations face critical operational and financial challenges:
+The portal functions as an internal company app store and activation desk:
+- **Software Catalog & Inventory**: Browse, search, filter, and view commercial software tools with tier classifications, seat quotas, and license parameters.
+- **Full CRUD Management**: Administrators can publish new software licenses, update seat capacity or activation keys, inspect detailed tool specifications, and archive obsolete records.
+- **Seat Activation & Device Binding**: Staff members can claim/activate available license seats for their specific hardware devices (MacBook serial, workstation hostname, VM ID).
+- **Publisher & Vendor Directory**: Maintain publisher profiles (JetBrains, Microsoft, Adobe, Figma) with direct support URLs and contact details.
+- **Validity & Renewal Tracking**: Monitor active, expiring, and expired licenses with quick renewal actions.
 
-1. **Software Sprawl & Shelfware Waste**: Approximately **25%–35%** of purchased software seats remain unassigned or unused (*shelfware*), leading to thousands of dollars wasted annually.
-2. **Surprise Expirations & Downtime**: Critical engineering tools expire unexpectedly because renewals are tracked manually across fragmented spreadsheets or individual employee inboxes.
-3. **Audit Compliance Penalties**: In the event of a software publisher compliance audit (BSA), organizations without centralized seat allocation logs risk severe legal and financial penalties for unlicensed installations.
-4. **Hardware Misplacement**: Organizations lose track of which laptop, workstation, or employee holds expensive perpetual software license keys.
-
-### 1.3 Project Scope
-The **Software License Platform** provides a practical, secure web application to:
-- **Centralize License Inventory**: Maintain records of software agreements, serial numbers, categories, seat limits, and purchase/expiration dates.
-- **Track Publishers & Vendors**: Keep an updated directory of software vendors, support URLs, contact persons, and phone numbers.
-- **Manage Seat Allocations**: Allocate seats to employees, bind them to specific hardware device tokens, and log revoking/reallocation.
-- **Automate Renewal Warnings**: Provide proactive 30-day urgency radars and quick contract extension actions.
-- **Generate Audit Documentation**: Export clean, structured data for IT auditors and financial stakeholders.
+All data-management activities are built strictly using **Laravel Blade templates**, standard Eloquent models, and RESTful CRUD controllers with robust server-side validation.
 
 ---
 
 ## 2. Modules Breakdown
 
-The system is organized into **10 distinct functional modules**:
+The portal is structured into **5 cohesive, functional modules** focused squarely on the Software License scenario:
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
-│                   SOFTWARE LICENSE MANAGEMENT SYSTEM                   │
+│            DIGITAL SOFTWARE LICENSE CATALOG & ACTIVATION PORTAL        │
 ├────────────────────────┬───────────────────────┬───────────────────────┤
-│ 1. Executive Dashboard │ 2. License Inventory  │ 3. Seat Allocation    │
+│ 1. License Catalog &   │ 2. License Publishing │ 3. Seat Activation &  │
+│    Discovery (Browse)  │    & CRUD Inventory   │    Device Binding     │
 ├────────────────────────┼───────────────────────┼───────────────────────┤
-│ 4. Vendor Management   │ 5. Staff Directory    │ 6. Renewals Radar     │
-├────────────────────────┼───────────────────────┼───────────────────────┤
-│ 7. Reports & Analytics │ 8. Audit Activity Log │ 9. System Settings    │
-├────────────────────────┴───────────────────────┴───────────────────────┤
-│              10. Public Web Portal & Authentication (Home/Auth)        │
-└────────────────────────────────────────────────────────────────────────┘
+│ 4. Publisher / Vendor  │ 5. Validity & Renewal │ [Auth & Account       │
+│    Directory           │    Tracker            │  Security]            │
+└────────────────────────┴───────────────────────┴───────────────────────┘
 ```
 
 ### Module Descriptions:
 
-| # | Module Name | Description & Functional Scope |
-| :-: | :--- | :--- |
-| **1** | **Executive Dashboard** | High-level KPI radar displaying total subscriptions, total seats, staff count, software publishers, calculated Annual Spend, Seat Utilization percentage ($U\%$), and contracts expiring within 30 days. |
-| **2** | **Software License Inventory** | Repository of all software licenses. Supports categorizing (Development, Design, Productivity, Cloud, Security), tier classification (Subscription vs Perpetual), and seat limit tracking. |
-| **3** | **Seat Allocation & Governance** | Assigns software seats to verified staff members. Records hardware device tags (e.g., MacBook Pro serial, Dell Latitude ID), prevents over-allocation, and logs seat revocations. |
-| **4** | **Vendor Directory** | Database of software publishers (e.g., JetBrains, Microsoft, Adobe) with representative contact details, direct support URLs, and contract notes. |
-| **5** | **Staff Directory** | Corporate employee directory with badge numbers (`EMP-XXXX`), departments, job titles, and active software counts. |
-| **6** | **Contract Renewals Hub** | Dedicated monitoring interface highlighting licenses approaching expiration within 30 days, complete with quick contract extension actions (+1 Month / +1 Year). |
-| **7** | **Reports & Analytics** | Statistical breakdowns of license expenditures across departments and vendors, with audit-ready CSV exports. |
-| **8** | **Audit Activity Log** | Chronological record of system transactions (seat allocations, revocations, contract renewals, license creations). |
-| **9** | **System Settings** | Enterprise configuration for company branding, administrator alert emails, currency selection, and renewal warning windows. |
-| **10**| **Public Portal & Authentication**| Public-facing landing page, About Us, Support Contact form, user registration, and secure administrator login/logout. |
+| # | Module Name | Primary Role | Functional Scope & Data Activities |
+| :-: | :--- | :--- | :--- |
+| **1** | **Software Catalog & Discovery** | Public / Staff Portal | Grid and list view of all licensed software tools. Supports instant search, category filters (Development, Design, Productivity, Cloud, Security), status badges (Active, Expiring Soon, Expired), and seat capacity indicators. |
+| **2** | **License Publishing & Inventory (CRUD)** | Admin / IT Desk | Full data-management operations for software licenses: Add new software agreements, view full technical specifications, update seat allocations and license keys, and delete/archive retired software. |
+| **3** | **Seat Activation & Device Binding** | Staff & IT Operations | Enables allocating a software license seat to an employee. Binds the activation to a specific device identifier (hostname, hardware serial), prevents over-allocation when seats reach capacity, and logs seat revocations. |
+| **4** | **Publisher & Vendor Directory** | Directory / Reference | Stores software publisher profiles (e.g., JetBrains, Microsoft, Adobe) including website URLs, dedicated customer support links, account manager contacts, and licensing terms. |
+| **5** | **Validity & Renewal Tracker** | Lifecycle / Monitoring | Visual radar highlighting software licenses approaching expiration within 30 days, complete with quick contract extension actions (+1 Month / +1 Year). |
 
 ---
 
@@ -113,9 +79,7 @@ erDiagram
     VENDORS ||--o{ LICENSES : "publishes (1:N)"
     LICENSES ||--o{ ASSIGNMENTS : "allocated in (1:N)"
     EMPLOYEES ||--o{ ASSIGNMENTS : "assigned to (1:N)"
-    USERS ||--o{ ACTIVITY_LOGS : "triggers (1:N)"
     USERS ||--o{ SESSIONS : "starts (1:N)"
-    USERS ||--o{ PASSWORD_RESET_TOKENS : "requests (1:1)"
 
     VENDORS {
         bigint id PK
@@ -183,211 +147,132 @@ erDiagram
         remember_token remember_token
         timestamps created_at_updated_at
     }
-
-    CONTACT_INQUIRIES {
-        bigint id PK
-        string name
-        string email
-        string category
-        string subject
-        text message
-        string status
-        string ip_address
-        timestamps created_at_updated_at
-    }
-
-    SETTINGS {
-        bigint id PK
-        string key UK
-        text value
-        string group
-        timestamps created_at_updated_at
-    }
-
-    ACTIVITY_LOGS {
-        bigint id PK
-        bigint user_id FK
-        string action
-        string title
-        text description
-        string badge
-        string ip_address
-        timestamp created_at
-    }
-
-    PASSWORD_RESET_TOKENS {
-        string email PK
-        string token
-        timestamp created_at
-    }
-
-    SESSIONS {
-        string id PK
-        bigint user_id FK
-        string ip_address
-        text user_agent
-        longtext payload
-        int last_activity
-    }
 ```
 
-### 3.2 Data Dictionary (Tables & Attributes)
+---
 
-#### Table 1: `vendors` (Software Publishers)
+### 3.2 Data Dictionary (Core Tables & Attributes)
+
+#### Table 1: `licenses` (Software Agreements & Catalog Items)
+The primary entity representing licensed software products in the portal.
+
 | Column Name | Data Type | Constraints | Description |
 | :--- | :--- | :--- | :--- |
-| `id` | BIGINT UNSIGNED | Primary Key, Auto-increment | Unique vendor record identifier |
-| `name` | VARCHAR(255) | NOT NULL | Official company name (e.g. JetBrains, Microsoft) |
-| `website` | VARCHAR(255) | NULLABLE | Vendor official website URL |
-| `contact_name` | VARCHAR(255) | NULLABLE | Account manager or representative name |
-| `contact_email` | VARCHAR(255) | NULLABLE | Vendor sales or support email |
-| `contact_phone` | VARCHAR(50) | NULLABLE | Representative hotline / phone number |
-| `support_url` | VARCHAR(255) | NULLABLE | Dedicated customer support portal URL |
-| `notes` | TEXT | NULLABLE | Contract notes, renewal terms |
-| `created_at` / `updated_at` | TIMESTAMP | NULLABLE | System audit timestamps |
-
-#### Table 2: `employees` (Staff Members)
-| Column Name | Data Type | Constraints | Description |
-| :--- | :--- | :--- | :--- |
-| `id` | BIGINT UNSIGNED | Primary Key, Auto-increment | Internal employee identifier |
-| `employee_id` | VARCHAR(100) | UNIQUE, NOT NULL | Corporate badge / payroll ID (`EMP-1001`) |
-| `name` | VARCHAR(255) | NOT NULL | Full name of the employee |
-| `email` | VARCHAR(255) | UNIQUE, NOT NULL | Corporate work email address |
-| `department` | VARCHAR(100) | NOT NULL | Department (Engineering, Design, QA, IT) |
-| `job_title` | VARCHAR(100) | NOT NULL | Job role / designation |
-| `phone` | VARCHAR(50) | NULLABLE | Contact phone number |
-| `status` | VARCHAR(50) | DEFAULT 'active' | Employment status (`active`, `inactive`) |
-| `created_at` / `updated_at` | TIMESTAMP | NULLABLE | System audit timestamps |
-
-#### Table 3: `licenses` (Software Agreements)
-| Column Name | Data Type | Constraints | Description |
-| :--- | :--- | :--- | :--- |
-| `id` | BIGINT UNSIGNED | Primary Key, Auto-increment | Unique software license ID |
-| `vendor_id` | BIGINT UNSIGNED | Foreign Key &rarr; `vendors.id` | Software vendor reference |
-| `software_name` | VARCHAR(255) | NOT NULL | Application name (e.g. IntelliJ IDEA, Adobe CC) |
-| `license_key` | VARCHAR(255) | NULLABLE | License key, serial, or activation code |
-| `po_number` | VARCHAR(100) | NULLABLE | Purchase order / invoice reference |
-| `license_type` | VARCHAR(100) | DEFAULT 'Subscription' | Subscription, Perpetual, Enterprise, Trial |
-| `category` | VARCHAR(100) | NULLABLE, INDEX | Development, Design, Productivity, Cloud |
-| `department` | VARCHAR(100) | NULLABLE | Assigned cost center / department |
-| `total_seats` | INT | NOT NULL, DEFAULT 1 | Total seat capacity purchased |
-| `cost_per_seat`| DECIMAL(10,2) | NOT NULL, DEFAULT 0.00 | Cost per individual seat |
+| `id` | BIGINT UNSIGNED | Primary Key, Auto-increment | Unique license identifier |
+| `vendor_id` | BIGINT UNSIGNED | Foreign Key &rarr; `vendors.id` | Software publisher / vendor |
+| `software_name` | VARCHAR(255) | NOT NULL | Application name (e.g., IntelliJ IDEA, Figma Pro) |
+| `license_key` | VARCHAR(255) | NULLABLE | Master activation key, serial, or license code |
+| `license_type` | VARCHAR(100) | DEFAULT 'Subscription' | Subscription, Perpetual, Enterprise, Per-Seat |
+| `category` | VARCHAR(100) | NULLABLE, INDEX | Category (Development, Design, Productivity, Cloud) |
+| `department` | VARCHAR(100) | NULLABLE | Designated department / team |
+| `total_seats` | INT | NOT NULL, DEFAULT 1 | Total seat quota purchased |
+| `cost_per_seat`| DECIMAL(10,2) | NOT NULL, DEFAULT 0.00 | Cost per seat |
 | `currency` | VARCHAR(10) | DEFAULT 'USD' | Currency code (USD, EUR, GBP, INR) |
 | `billing_cycle`| VARCHAR(50) | DEFAULT 'annually' | monthly, annually, quarterly, one-time |
-| `purchase_date`| DATE | NOT NULL | Date contract or license was purchased |
-| `expiration_date`| DATE | NULLABLE | Contract expiry date (NULL for Perpetual) |
-| `status` | VARCHAR(50) | DEFAULT 'active', INDEX | active, expiring_soon, expired, suspended |
-| `notes` | TEXT | NULLABLE | Internal licensing notes |
-| `created_at` / `updated_at` | TIMESTAMP | NULLABLE | System audit timestamps |
+| `purchase_date`| DATE | NOT NULL | Purchase or subscription start date |
+| `expiration_date`| DATE | NULLABLE | Expiry date (NULL for perpetual licenses) |
+| `status` | VARCHAR(50) | DEFAULT 'active', INDEX | Status (`active`, `expiring_soon`, `expired`, `suspended`) |
+| `notes` | TEXT | NULLABLE | Special licensing terms or instructions |
+| `created_at` / `updated_at` | TIMESTAMP | NULLABLE | Record audit timestamps |
 
-#### Table 4: `assignments` (Seat Allocations)
+#### Table 2: `vendors` (Software Publishers)
+Represents the companies and publishers issuing the software licenses.
+
 | Column Name | Data Type | Constraints | Description |
 | :--- | :--- | :--- | :--- |
-| `id` | BIGINT UNSIGNED | Primary Key, Auto-increment | Unique assignment record ID |
+| `id` | BIGINT UNSIGNED | Primary Key, Auto-increment | Unique vendor ID |
+| `name` | VARCHAR(255) | NOT NULL | Publisher name (e.g. JetBrains, Adobe, Microsoft) |
+| `website` | VARCHAR(255) | NULLABLE | Official vendor website |
+| `contact_name` | VARCHAR(255) | NULLABLE | Vendor representative or account executive |
+| `contact_email` | VARCHAR(255) | NULLABLE | Sales or support email |
+| `contact_phone` | VARCHAR(50) | NULLABLE | Support phone number |
+| `support_url` | VARCHAR(255) | NULLABLE | Direct portal URL for license renewal/helpdesk |
+| `notes` | TEXT | NULLABLE | Terms, SLA, contract notes |
+| `created_at` / `updated_at` | TIMESTAMP | NULLABLE | Record audit timestamps |
+
+#### Table 3: `assignments` (Seat Activations & Device Bindings)
+Tracks individual seat allocations to staff members and their hardware devices.
+
+| Column Name | Data Type | Constraints | Description |
+| :--- | :--- | :--- | :--- |
+| `id` | BIGINT UNSIGNED | Primary Key, Auto-increment | Unique activation record ID |
 | `license_id` | BIGINT UNSIGNED | Foreign Key &rarr; `licenses.id` | Software license allocated |
-| `employee_id` | BIGINT UNSIGNED | Foreign Key &rarr; `employees.id` | Staff member receiving seat |
-| `assigned_date`| DATE | NOT NULL | Date seat was allocated |
-| `revoked_date` | DATE | NULLABLE | Date seat was revoked / returned |
-| `status` | VARCHAR(50) | DEFAULT 'active', INDEX | active, revoked |
-| `device_info` | VARCHAR(255) | NULLABLE | Workstation hostname, serial, or MAC ID |
-| `notes` | TEXT | NULLABLE | Allocation reason or ticket reference |
-| `created_at` / `updated_at` | TIMESTAMP | NULLABLE | System audit timestamps |
+| `employee_id` | BIGINT UNSIGNED | Foreign Key &rarr; `employees.id` | Employee receiving the seat |
+| `assigned_date`| DATE | NOT NULL | Date seat was activated |
+| `revoked_date` | DATE | NULLABLE | Date seat was deactivated / returned |
+| `status` | VARCHAR(50) | DEFAULT 'active', INDEX | Activation status (`active`, `revoked`) |
+| `device_info` | VARCHAR(255) | NULLABLE | Workstation hostname, serial, or hardware MAC |
+| `notes` | TEXT | NULLABLE | Activation reason or purpose |
+| `created_at` / `updated_at` | TIMESTAMP | NULLABLE | Record audit timestamps |
 
-#### Table 5: `users` (Login Credentials & User Accounts)
+#### Table 4: `employees` (Staff Members & Users)
+Company staff members eligible to activate software licenses.
+
 | Column Name | Data Type | Constraints | Description |
 | :--- | :--- | :--- | :--- |
-| `id` | BIGINT UNSIGNED | Primary Key, Auto-increment | Unique user account ID |
-| `name` | VARCHAR(255) | NOT NULL | User's full name |
-| `email` | VARCHAR(255) | UNIQUE, NOT NULL | Login email address (credential username) |
-| `email_verified_at`| TIMESTAMP | NULLABLE | Email verification timestamp |
-| `password` | VARCHAR(255) | NOT NULL | Encrypted password hash (Bcrypt / Argon2) |
-| `role` | VARCHAR(50) | DEFAULT 'admin' | User permission role (`super_admin`, `admin`, `viewer`) |
-| `status` | VARCHAR(50) | DEFAULT 'active' | Account state (`active`, `suspended`, `pending`) |
-| `remember_token` | VARCHAR(100) | NULLABLE | "Remember Me" persistent authentication token |
-| `created_at` / `updated_at` | TIMESTAMP | NULLABLE | Account creation and last profile modification |
+| `id` | BIGINT UNSIGNED | Primary Key, Auto-increment | Employee ID |
+| `employee_id` | VARCHAR(100) | UNIQUE, NOT NULL | Staff badge number (`EMP-1001`) |
+| `name` | VARCHAR(255) | NOT NULL | Full name |
+| `email` | VARCHAR(255) | UNIQUE, NOT NULL | Work email address |
+| `department` | VARCHAR(100) | NOT NULL | Department (Engineering, Design, QA) |
+| `job_title` | VARCHAR(100) | NOT NULL | Designation |
+| `status` | VARCHAR(50) | DEFAULT 'active' | Status (`active`, `inactive`) |
+| `created_at` / `updated_at` | TIMESTAMP | NULLABLE | Record audit timestamps |
 
-#### Table 6: `password_reset_tokens` (Forgot Password / Password Recovery)
+#### Table 5: `users` (Portal Administrator Accounts)
+Authenticated administrators with privileges to perform CRUD actions.
+
 | Column Name | Data Type | Constraints | Description |
 | :--- | :--- | :--- | :--- |
-| `email` | VARCHAR(255) | Primary Key, Foreign Key &rarr; `users.email` | User email requesting password reset |
-| `token` | VARCHAR(255) | NOT NULL | Cryptographic HMAC SHA-256 secure reset token |
-| `created_at` | TIMESTAMP | NULLABLE | Token generation timestamp (used for 60-min expiry check) |
-
-#### Table 7: `sessions` (Login Session Management & Device Tracking)
-| Column Name | Data Type | Constraints | Description |
-| :--- | :--- | :--- | :--- |
-| `id` | VARCHAR(255) | Primary Key | Unique random session identifier |
-| `user_id` | BIGINT UNSIGNED | NULLABLE, Foreign Key &rarr; `users.id` | Authenticated user ID (NULL for guest visitors) |
-| `ip_address` | VARCHAR(45) | NULLABLE | Client IPv4 / IPv6 address |
-| `user_agent` | TEXT | NULLABLE | Browser client, OS, and device string |
-| `payload` | LONGTEXT | NOT NULL | Serialized and encrypted session state payload |
-| `last_activity` | INTEGER | NOT NULL, INDEX | Unix timestamp of user's most recent HTTP request |
+| `id` | BIGINT UNSIGNED | Primary Key, Auto-increment | User ID |
+| `name` | VARCHAR(255) | NOT NULL | Administrator name |
+| `email` | VARCHAR(255) | UNIQUE, NOT NULL | Login email address |
+| `password` | VARCHAR(255) | NOT NULL | Encrypted password hash |
+| `role` | VARCHAR(50) | DEFAULT 'admin' | Access role (`admin`, `staff`) |
+| `remember_token` | VARCHAR(100) | NULLABLE | Remember Me token |
+| `created_at` / `updated_at` | TIMESTAMP | NULLABLE | Record audit timestamps |
 
 ---
 
 ## 4. Required Fields Specification
 
-Every form in the application enforces strict validation boundaries:
+All interactive forms in the portal enforce strict server-side validation rules in Laravel to guarantee data integrity:
 
-### Form 1: Add/Edit Software License (`licenses`)
+### Form 1: Publish New Software License (`licenses.create`)
 - **Required Fields**:
-  - `software_name`: Text, mandatory, max 255 chars.
-  - `vendor_id`: Dropdown selection, mandatory (must exist in `vendors`).
-  - `license_type`: Selection (`Subscription`, `Perpetual`, `Per Seat`, `Enterprise`).
-  - `total_seats`: Integer, mandatory, minimum value = `1`.
-  - `cost_per_seat`: Numeric decimal, mandatory, minimum value = `0.00`.
-  - `billing_cycle`: Selection (`monthly`, `annually`, `quarterly`, `one-time`).
-  - `purchase_date`: Date, mandatory.
-  - `expiration_date`: Date, mandatory for Subscriptions (must be $\ge$ `purchase_date`).
-- **Optional Fields**: `license_key`, `po_number`, `category`, `department`, `notes`.
+  - `software_name`: String, mandatory, max 255 chars (`required|string|max:255`).
+  - `vendor_id`: Dropdown integer, mandatory, must exist in `vendors` (`required|exists:vendors,id`).
+  - `license_type`: Selection, mandatory (`required|string|max:100`).
+  - `total_seats`: Integer, mandatory, minimum 1 (`required|integer|min:1`).
+  - `cost_per_seat`: Numeric, optional/mandatory, minimum 0 (`nullable|numeric|min:0`).
+  - `currency`: String, mandatory (`required|string|max:10`).
+  - `billing_cycle`: Selection (`required|in:monthly,annually,quarterly,one-time`).
+  - `purchase_date`: Valid Date, mandatory (`required|date`).
+  - `expiration_date`: Valid Date, required for subscriptions (`nullable|date|after_or_equal:purchase_date`).
+  - `status`: Selection (`required|in:active,expiring_soon,expired,suspended`).
+- **Optional Fields**: `license_key`, `category`, `notes`.
 
-### Form 2: Assign Seat to Employee (`assignments`)
+### Form 2: Modify Software License (`licenses.edit`)
 - **Required Fields**:
-  - `license_id`: Dropdown selection, mandatory (must have available capacity $\gt 0$).
-  - `employee_id`: Dropdown selection, mandatory (must exist in `employees`).
-  - `assigned_date`: Date, mandatory.
-  - `device_info`: Text, mandatory (workstation / device hostname tag).
+  - Validates the exact same fields as Form 1 via `PUT /licenses/{id}` to ensure consistency during record modification.
+
+### Form 3: Activate License Seat on Device (`assignments.create`)
+- **Required Fields**:
+  - `license_id`: Dropdown selection, mandatory, must exist in `licenses` with available seats (`required|exists:licenses,id`).
+  - `employee_id`: Dropdown selection, mandatory, must exist in `employees` (`required|exists:employees,id`).
+  - `assigned_date`: Valid Date, mandatory (`required|date`).
+  - `device_info`: String, mandatory device tag / hostname (`required|string|max:255`).
 - **Optional Fields**: `notes`.
 
-### Form 3: Register/Edit Vendor (`vendors`)
+### Form 4: Register Software Publisher (`vendors.create`)
 - **Required Fields**:
-  - `name`: Text, mandatory, max 255 chars.
-- **Optional Fields**: `website` (valid URL format), `contact_name`, `contact_email` (valid email format), `contact_phone`, `support_url` (valid URL format), `notes`.
+  - `name`: String, mandatory, max 255 chars (`required|string|max:255`).
+- **Optional Fields**: `website` (valid URL), `contact_name`, `contact_email` (valid email), `contact_phone`, `support_url` (valid URL), `notes`.
 
-### Form 4: Register Staff Member (`employees`)
+### Form 5: User Sign In / Authentication (`/login`)
 - **Required Fields**:
-  - `employee_id`: Text, mandatory, unique across system (e.g. `EMP-1001`).
-  - `name`: Text, mandatory, max 255 chars.
-  - `email`: Email, mandatory, unique across system.
-  - `department`: Dropdown/Text, mandatory (e.g. `Engineering`).
-  - `job_title`: Text, mandatory (e.g. `Senior Developer`).
-- **Optional Fields**: `phone`, `status`.
-
-### Form 5: User Sign In / Login Credentials (`/login`)
-- **Required Fields**:
-  - `email`: Text / Email format, mandatory (`required|email`).
-  - `password`: Password format, mandatory (`required|string`).
-- **Optional Fields**:
-  - `remember`: Checkbox boolean (keeps session active for 30 days via `remember_token`).
-
-### Form 6: User Registration (`/register`)
-- **Required Fields**:
-  - `name`: Text, mandatory, min 2 chars, max 255 chars (`required|string|max:255`).
-  - `email`: Email, mandatory, must be valid email syntax, unique across `users` table (`required|email|unique:users,email`).
-  - `password`: Password, mandatory, minimum 8 characters (`required|string|min:8`).
-  - `password_confirmation`: Password, mandatory, must match `password` identically (`required|same:password`).
-- **Optional Fields**:
-  - `terms`: Acceptance checkbox for organizational IT policies.
-
-### Form 7: Forgot Password & Password Reset (`/forgot-password` & `/reset-password`)
-- **Step 1: Request Password Reset Link (`/forgot-password`)**:
-  - `email`: Mandatory, valid email, must exist in `users` table (`required|email|exists:users,email`).
-  - *Action*: System generates unique cryptographic token in `password_reset_tokens` table valid for 60 minutes.
-- **Step 2: Submit New Password (`/reset-password`)**:
-  - `token`: Hidden field, mandatory cryptographic string verification.
-  - `email`: Mandatory, must match the requested token in `password_reset_tokens`.
-  - `password`: Mandatory, minimum 8 characters (`required|string|min:8`).
-  - `password_confirmation`: Mandatory, must match new `password` (`required|same:password`).
+  - `email`: Mandatory valid email format (`required|email`).
+  - `password`: Mandatory password string (`required|string`).
 
 ---
 
@@ -395,61 +280,60 @@ Every form in the application enforces strict validation boundaries:
 
 ### 5.1 Sitemap & Navigation Flow
 
+The navigation flow is organized intuitively around the catalog and its CRUD operations:
+
 ```
-                              PUBLIC PORTAL
-                     ┌──────────────┴──────────────┐
-                     ▼                             ▼
-                Home Page (/)              About Us (/about)
-                     │                             │
-                     ├──────────────┬──────────────┤
-                     ▼              ▼              ▼
-             Contact (/contact)  Login (/login)  Register (/register)
-                                    │
-                            [AUTHENTICATION]
-                                    │
-                                    ▼
-                        ADMINISTRATIVE WORKSPACE
-                     ┌──────────────┴──────────────┐
-                     │                             │
-         EXECUTIVE DASHBOARD (/dashboard)  SYSTEM SETTINGS (/settings)
-                     │
-       ┌─────────────┼─────────────┬─────────────┬─────────────┐
-       ▼             ▼             ▼             ▼             ▼
-   Licenses     Assignments     Vendors      Employees     Renewals Hub
-  (/licenses)  (/assignments)  (/vendors)   (/employees)   (/renewals)
-       │             │             │             │             │
-   CRUD Forms    Assign Form   CRUD Forms    CRUD Forms    +1Yr Extend
+                          PORTAL ROOT (/)
+                                │
+                 ┌──────────────┴──────────────┐
+                 ▼                             ▼
+         Software Catalog                 About & Portal Guide
+          (/licenses)                          (/about)
+                 │
+                 ├────────────────────────┬────────────────────────┐
+                 ▼                        ▼                        ▼
+       License Detail & Specs       Publish New Tool        Edit Software Record
+        (/licenses/{id})          (/licenses/create)       (/licenses/{id}/edit)
+                 │
+                 ├────────────────────────┬────────────────────────┐
+                 ▼                        ▼                        ▼
+        Activate on Device           Vendors Directory        Renewals Radar
+       (/assignments/create)            (/vendors)             (/renewals)
 ```
 
 ### 5.2 Navigation Layout Architecture
 
-The application layout uses an intuitive, responsive dual-navigation shell:
+All pages inherit from a shared Blade layout (`layouts/app.blade.php`) ensuring a consistent, modern user experience:
 
-1. **Persistent Left Sidebar (`#appSidebar`)**:
-   - **Branding Header**: Logo icon + "LicenseHub Pro" badge.
-   - **Overview Section**: Executive Dashboard, Reports & Analytics.
-   - **License Governance Section**: Software Licenses, Seat Assignments, Renewals Hub.
-   - **Directory Section**: Software Vendors, Employee Staff.
-   - **Administration Section**: Audit Activity Log, System Settings.
-   - **Sidebar Footer**: Live system status dot + full-width **"Sign Out"** button.
+1. **Persistent Sidebar Navigation (`#appSidebar`)**:
+   - **Branding Header**: Logo badge + "LicenseHub Portal".
+   - **Catalog Links**: Browse Software Catalog, Seat Activations, Expiration Radar.
+   - **Directory Links**: Software Publishers, Staff Directory.
+   - **Quick Actions**: Direct buttons for `+ New License` and `Activate Seat`.
 
-2. **Top Navigation Bar (`.topbar`)**:
-   - **Dynamic Breadcrumbs**: Automatically indicates current location (e.g., `Dashboard / Licenses / Add New`).
-   - **Quick Action Buttons**: Direct shortcuts for `Assign Seat` and `+ New License`.
-   - **Admin Identity Pill**: Displays user initials avatar, full name, and corporate email.
-   - **Top Bar Logout Button**: Red-accented, 1-click **Log Out** button (`POST /logout` with CSRF protection).
+2. **Top Bar Header (`.topbar`)**:
+   - **Dynamic Breadcrumbs**: Reflects page context (e.g., `Catalog > IntelliJ IDEA > Edit`).
+   - **Search Input**: Instant filter across software titles and license keys.
+   - **User Profile Pill & Logout**: Displays administrator badge and secure logout action (`POST /logout`).
 
-3. **Public Navigation Header (`.pub-header`)**:
-   - Clean, sticky header with Brand link, Navigation menu (Home, About, Contact & Support), and Auth actions (Log In, Get Started / Dashboard).
+3. **Blade Template Hierarchy**:
+   - `resources/views/layouts/app.blade.php`: Master structural layout.
+   - `resources/views/partials/navbar.blade.php`: Responsive topbar and search.
+   - `resources/views/partials/alerts.blade.php`: Success/error notification banners (`session('success')`).
+   - `resources/views/licenses/index.blade.php`: Searchable Catalog grid and list view.
+   - `resources/views/licenses/show.blade.php`: Detailed view of license parameters and active devices.
+   - `resources/views/licenses/create.blade.php`: Blade form with validation error indicators.
+   - `resources/views/licenses/edit.blade.php`: Pre-filled update form with `@method('PUT')`.
 
 ---
 
 ## 6. Milestone 1 Rubric Compliance Checklist
 
-| Evaluator Requirement | Provided in this Milestone | Verified Status |
-| :--- | :--- | :---: |
-| **Problem Statement & Scope** | Defined in Section 1 (industry problem, shelfware waste, compliance risk, solution scope). | **Complete (5/5)** |
-| **Modules Description** | All 10 modules documented in Section 2 with input, output, and operational descriptions. | **Complete (5/5)** |
-| **Database & Table Design** | Full ERD diagram and 5 detailed data dictionary tables documented in Section 3. | **Complete (5/5)** |
-| **Required Fields** | Exact validation requirements for all 5 primary forms documented in Section 4. | **Complete (5/5)** |
-| **Page & Navigation Design** | Visual sitemap, flow hierarchy, and sidebar/topbar architecture documented in Section 5. | **Complete (5/5)** |
+| Evaluator Requirement (from Rubric) | Addressed in this Specification | Marks Weightage | Status |
+| :--- | :--- | :---: | :---: |
+| **Problem statement & scope** | Section 1 defines the real-world software license problem and scopes the Catalog & Activation Portal without bloated ERP overhead. | 1.0 / 1.0 | **Complete** |
+| **Modules** | Section 2 breaks down the 5 focused functional modules with roles, inputs, and operational outputs. | 1.0 / 1.0 | **Complete** |
+| **Database / table design** | Section 3 provides the Mermaid ERD and 5 complete data dictionary tables with attributes, constraints, and relationships. | 1.0 / 1.0 | **Complete** |
+| **Required fields** | Section 4 specifies exact mandatory/optional fields and Laravel validation constraints for all forms. | 1.0 / 1.0 | **Complete** |
+| **Page / navigation design** | Section 5 presents the complete visual sitemap, user flow, sidebar/topbar architecture, and Blade hierarchy. | 1.0 / 1.0 | **Complete** |
+| **Total Marks** | **Milestone - 1 Evaluation Target** | **5.0 / 5.0** | **Ready for Submission** |

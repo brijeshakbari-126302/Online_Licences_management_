@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Software Licenses')
+@section('title', 'Software Catalog')
 
 @section('content')
 <!-- Page Header -->
 <div class="page-header">
     <div class="page-title-group">
-        <h1>Software Licenses</h1>
-        <p class="page-subtitle">Track, audit, and allocate enterprise application subscriptions and software keys.</p>
+        <h1>Software License Catalog</h1>
+        <p class="page-subtitle">Browse, discover, and manage licensed tools, seat capacities, and activation keys.</p>
     </div>
     <div class="page-actions">
         <a href="{{ route('licenses.create') }}" class="btn btn-primary">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            Add New License
+            Add Software License
         </a>
     </div>
 </div>

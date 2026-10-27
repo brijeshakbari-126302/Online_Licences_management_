@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Seat Assignments')
+@section('title', 'Seat Activations')
 
 @section('content')
 <!-- Page Header -->
 <div class="page-header">
     <div class="page-title-group">
-        <h1>License Seat Assignments</h1>
-        <p class="page-subtitle">Audit trail of software seat allocations, hardware workstation links, and revocations.</p>
+        <h1>License Seat Activations</h1>
+        <p class="page-subtitle">Track active software seat allocations, hardware workstation links, and device bindings.</p>
     </div>
     <div class="page-actions">
         <a href="{{ route('assignments.create') }}" class="btn btn-primary">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="22" y1="11" x2="16" y2="11"></line></svg>
-            Assign License Seat
+            Activate Seat on Device
         </a>
     </div>
 </div>
